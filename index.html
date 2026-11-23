@@ -24,7 +24,7 @@
 
     html, body {
       width: 100%;
-      overflow-x: hidden; /* Evita que la página se mueva de lado en celular */
+      overflow-x: hidden;
     }
 
     body {
@@ -122,11 +122,10 @@
     /* CUADRÍCULA ADAPTABLE */
     .grid-catalogo, .grid-info {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 columnas en PC */
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
-    /* En tablet: 2 columnas */
     @media (max-width: 850px) {
       .grid-catalogo, .grid-info {
         grid-template-columns: repeat(2, 1fr);
@@ -134,38 +133,58 @@
       }
     }
 
-    /* En celular: 2 columnas pequeñas para ver rápido, y al tocar crece al 100% */
     @media (max-width: 550px) {
       .grid-catalogo {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
       }
       .grid-info {
-        grid-template-columns: 1fr; /* Rutas y compras en 1 columna grande en celular */
+        grid-template-columns: 1fr;
       }
     }
 
-    /* ESTILO DE IMÁGENES Y ZOOM DIRECTO EN EL SITIO */
-    .grid-catalogo img, .grid-info img {
+    /* CAJA DE CADA IMAGEN */
+    .foto-caja {
       width: 100%;
-      height: auto;
-      display: block;
       border-radius: 8px;
+      overflow: hidden;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
       cursor: zoom-in;
+      background: #fff;
       transition: all 0.25s ease;
     }
 
-    /* CLASE QUE SE ACTIVA AL HACER CLIC: EXPANDE LA IMAGEN AHÍ MISMO */
-    .grid-catalogo img.zoom-activo,
-    .grid-info img.zoom-activo {
-      grid-column: 1 / -1; /* Ocupa todo el ancho de la fila ahí mismo */
+    .foto-caja img {
       width: 100%;
-      max-width: 850px;
-      margin: 8px auto;
+      height: auto;
+      display: block;
+      transition: transform 0.25s ease;
+    }
+
+    /* ESTADO AMPLIADO AHÍ MISMO AL HACER CLIC */
+    .foto-caja.zoom-activo {
+      grid-column: 1 / -1; /* Ocupa todo el ancho de la sección ahí mismo */
+      overflow-x: auto;    /* Permite deslizar la foto ampliada con el dedo */
       cursor: zoom-out;
-      box-shadow: 0 12px 35px rgba(106, 27, 154, 0.35);
       border: 3px solid var(--primario);
+      box-shadow: 0 12px 35px rgba(106, 27, 154, 0.35);
+      padding: 4px;
+    }
+
+    .foto-caja.zoom-activo img {
+      width: 160%; /* Zoom real del 160% para leer precios y detalles */
+      max-width: none;
+    }
+
+    /* En PC, el 100% del contenedor (850px) ya es enorme y nítido */
+    @media (min-width: 768px) {
+      .foto-caja.zoom-activo {
+        max-width: 850px;
+        margin: 0 auto;
+      }
+      .foto-caja.zoom-activo img {
+        width: 100%;
+      }
     }
 
     /* VIDEO RESPONSIVO */
@@ -245,39 +264,39 @@
 
     <section id="catalogo">
       <h1>Catálogo de Productos</h1>
-      <p class="subtitulo">Toca cualquier imagen para agrandarla ahí mismo; vuelve a tocarla para reducirla</p>
+      <p class="subtitulo">Toca cualquier foto para hacerle zoom ahí mismo; vuelve a tocarla para reducirla</p>
       <div class="grid-catalogo">
-        <img src="CAT 00.jpg" alt="Catálogo 00">
-        <img src="CAT 01.jpg" alt="Catálogo 01">
-        <img src="CAT 02.jpg" alt="Catálogo 02">
-        <img src="CAT 03.jpg" alt="Catálogo 03">
-        <img src="CAT 04.jpg" alt="Catálogo 04">
-        <img src="CAT 05.jpg" alt="Catálogo 05">
-        <img src="CAT 06.jpg" alt="Catálogo 06">
-        <img src="CAT 07.jpg" alt="Catálogo 07">
-        <img src="CAT 08.jpg" alt="Catálogo 08">
-        <img src="CAT 09.jpg" alt="Catálogo 09">
-        <img src="CAT 10.jpg" alt="Catálogo 10">
-        <img src="CAT 11.jpg" alt="Catálogo 11">
-        <img src="CAT 12.jpg" alt="Catálogo 12">
-        <img src="CAT 13.jpg" alt="Catálogo 13">
-        <img src="CAT 14.jpg" alt="Catálogo 14">
-        <img src="CAT 15.jpg" alt="Catálogo 15">
-        <img src="CAT 16.jpg" alt="Catálogo 16">
-        <img src="CAT 17.jpg" alt="Catálogo 17">
-        <img src="CAT 18.jpg" alt="Catálogo 18">
-        <img src="CAT 19.jpg" alt="Catálogo 19">
-        <img src="CAT 20.jpg" alt="Catálogo 20">
-        <img src="CAT 21.jpg" alt="Catálogo 21">
-        <img src="CAT 22.jpg" alt="Catálogo 22">
-        <img src="CAT 23.jpg" alt="Catálogo 23">
-        <img src="CAT 24.jpg" alt="Catálogo 24">
-        <img src="CAT 25.jpg" alt="Catálogo 25">
-        <img src="CAT 26.jpg" alt="Catálogo 26">
-        <img src="CAT 27.jpg" alt="Catálogo 27">
-        <img src="CAT 28.jpg" alt="Catálogo 28">
-        <img src="CAT 29.jpg" alt="Catálogo 29">
-        <img src="CAT 30.jpg" alt="Catálogo 30">
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 00.jpg" alt="Catálogo 00"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 01.jpg" alt="Catálogo 01"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 02.jpg" alt="Catálogo 02"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 03.jpg" alt="Catálogo 03"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 04.jpg" alt="Catálogo 04"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 05.jpg" alt="Catálogo 05"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 06.jpg" alt="Catálogo 06"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 07.jpg" alt="Catálogo 07"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 08.jpg" alt="Catálogo 08"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 09.jpg" alt="Catálogo 09"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 10.jpg" alt="Catálogo 10"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 11.jpg" alt="Catálogo 11"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 12.jpg" alt="Catálogo 12"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 13.jpg" alt="Catálogo 13"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 14.jpg" alt="Catálogo 14"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 15.jpg" alt="Catálogo 15"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 16.jpg" alt="Catálogo 16"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 17.jpg" alt="Catálogo 17"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 18.jpg" alt="Catálogo 18"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 19.jpg" alt="Catálogo 19"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 20.jpg" alt="Catálogo 20"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 21.jpg" alt="Catálogo 21"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 22.jpg" alt="Catálogo 22"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 23.jpg" alt="Catálogo 23"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 24.jpg" alt="Catálogo 24"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 25.jpg" alt="Catálogo 25"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 26.jpg" alt="Catálogo 26"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 27.jpg" alt="Catálogo 27"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 28.jpg" alt="Catálogo 28"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 29.jpg" alt="Catálogo 29"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 30.jpg" alt="Catálogo 30"></div>
       </div>
     </section>
 
@@ -285,7 +304,7 @@
       <h2>Información sobre Rutas</h2>
       <p class="subtitulo">Consulta nuestras rutas foráneas y locales</p>
       <div class="grid-info">
-        <img src="RUTFOR.jpg" alt="Rutas Foráneas">
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="RUTFOR.jpg" alt="Rutas Foráneas"></div>
       </div>
     </section>
 
@@ -293,71 +312,8 @@
       <h2>Rutas Locales, Entregas y Compras</h2>
       <p class="subtitulo">Todo lo que necesitas saber para realizar tu pedido</p>
       <div class="grid-info">
-        <img src="ENTREGAS.jpg" alt="Entregas">
-        <img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras">
-        <img src="SHOPING.jpg" alt="Shopping">
-      </div>
-    </section>
-
-    <section id="video">
-      <h2>Conoce Más de Nosotros</h2>
-      <p class="subtitulo">Presentación Muebleca</p>
-      <div class="video-caja">
-        <!-- RECUERDA: Pon aquí el nombre exacto de tu archivo .mp4 que ya te funcionó -->
-        <video src="video mueblecal.mp4" autoplay muted loop playsinline controls></video>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    Catálogo Muebleca &copy; 2026 — Todos los derechos reservados
-  </footer>
-
-  <button class="btn-arriba" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Volver arriba">↑</button>
-
-  <script>
-    // ZOOM DIRECTO EN EL MISMO LUGAR AL HACER CLIC / TOCAR
-    const todasLasImagenes = document.querySelectorAll('.grid-catalogo img, .grid-info img');
-
-    todasLasImagenes.forEach(img => {
-      img.addEventListener('click', () => {
-        const yaEstabaGrande = img.classList.contains('zoom-activo');
-
-        // Reduce cualquier otra imagen que estuviera ampliada
-        todasLasImagenes.forEach(otra => otra.classList.remove('zoom-activo'));
-
-        // Si no estaba grande, la agranda ahí mismo y centra la vista en ella
-        if (!yaEstabaGrande) {
-          img.classList.add('zoom-activo');
-          setTimeout(() => {
-            img.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }, 100);
-        }
-      });
-    });
-
-    // ADORNOS NAVIDEÑOS
-    const figuras = ['❄️', '❅', '🎄', '✨'];
-    function crearAdorno() {
-      const adorno = document.createElement('div');
-      adorno.classList.add('adorno-navidad');
-      adorno.innerText = figuras[Math.floor(Math.random() * figuras.length)];
-      adorno.style.left = Math.random() * 95 + 'vw';
-      adorno.style.fontSize = (Math.random() * 12 + 14) + 'px';
-      
-      const duracion = Math.random() * 5 + 5;
-      adorno.style.animationDuration = duracion + 's';
-      adorno.style.opacity = Math.random() * 0.5 + 0.5;
-
-      document.body.appendChild(adorno);
-
-      setTimeout(() => {
-        adorno.remove();
-      }, duracion * 1000);
-    }
-
-
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="ENTREGAS.jpg" alt="Entregas"></div>
+        <div class="foto-caja" onclick="hacerZoom(this)"><img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras"></div>
 
 
 
