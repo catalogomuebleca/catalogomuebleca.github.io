@@ -12,19 +12,41 @@
       background: #f4eef8 url("fondo1.jpg") center/cover fixed no-repeat;
       line-height: 1.5;
     }
+
+    /* MENÚ SUPERIOR CON COLORES LLAMATIVOS */
     header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 10px 14px;
+      background: linear-gradient(90deg, #6a1b9a 0%, #d81b60 100%);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      padding: 12px 14px;
       text-align: center;
     }
-    .logo { font-size: 1.2rem; font-weight: 700; color: #6a1b9a; margin-bottom: 6px; }
-    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
-    nav a {
-      text-decoration: none; color: #333; font-weight: 600; font-size: 0.85rem;
-      padding: 5px 12px; border-radius: 16px; background: #f3e5f5;
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      margin-bottom: 8px;
     }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    nav a {
+      text-decoration: none;
+      color: #222222;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: #ffca28; /* Amarillo dorado llamativo */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background 0.2s;
+    }
+    nav a:hover {
+      background: #ffffff;
+      color: #d81b60;
+      transform: translateY(-2px);
+    }
+
     .contenedor { max-width: 960px; margin: 20px auto; padding: 0 12px; }
     section {
       background: rgba(255, 255, 255, 0.95);
@@ -33,6 +55,7 @@
     }
     h1, h2 { text-align: center; color: #6a1b9a; font-size: 1.4rem; margin-bottom: 4px; }
     .sub { text-align: center; color: #666; font-size: 0.85rem; margin-bottom: 16px; }
+
     .galeria {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -44,11 +67,27 @@
     .galeria a { display: block; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
     .galeria img { width: 100%; height: auto; display: block; }
     .oculto { display: none !important; }
+
+    /* BOTÓN DE MÁS PÁGINAS EN COLOR ROJO */
     .btn-mas {
-      display: block; margin: 20px auto 0; padding: 12px 28px;
-      background: #6a1b9a; color: #fff; border: none; border-radius: 25px;
-      font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      display: block;
+      margin: 22px auto 0;
+      padding: 13px 30px;
+      background: #e53935; /* Rojo vibrante */
+      color: #ffffff;
+      border: none;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(229, 57, 53, 0.35);
+      transition: background 0.2s, transform 0.2s;
     }
+    .btn-mas:hover {
+      background: #b71c1c;
+      transform: scale(1.03);
+    }
+
     video { width: 100%; max-width: 800px; margin: 0 auto; display: block; border-radius: 10px; }
     footer { text-align: center; padding: 16px; background: rgba(255,255,255,0.9); font-size: 0.8rem; color: #555; }
   </style>
@@ -59,13 +98,14 @@
     <div class="logo">CATÁLOGO MUEBLECA</div>
     <nav>
       <a href="#catalogo">Catálogo</a>
-      <a href="#rutas">Rutas</a>
-      <a href="#compras">Entregas y Pasos para comprar</a>
+      <a href="#compras">Rutas Locales y Metodos de Compra</a>
+      <a href="#rutas">Rutas Foráneas</a>
       <a href="#video">Video</a>
     </nav>
   </header>
 
   <main class="contenedor">
+    <!-- 1. CATÁLOGO -->
     <section id="catalogo">
       <h1>Catálogo de Productos</h1>
       <p class="sub">Toca cualquier hoja para abrirla sola y acercar con tus dedos</p>
@@ -105,15 +145,9 @@
       <button class="btn-mas" id="btn-mas" onclick="mostrarMas()">Ver más hojas del catálogo</button>
     </section>
 
-    <section id="rutas">
-      <h2>Información sobre Rutas</h2>
-      <div class="galeria">
-        <a href="RUTFOR.jpg"><img src="RUTFOR.jpg" alt="Rutas Foráneas" loading="lazy"></a>
-      </div>
-    </section>
-
+    <!-- 2. RUTAS LOCALES, ENTREGAS Y COMPRAS (AHORA ARRIBA) -->
     <section id="compras">
-      <h2>Rutas Locales, Entregas y Pasos para comprar</h2>
+      <h2>Rutas Locales, Entregas y Metodos de compra</h2>
       <div class="galeria">
         <a href="ENTREGAS.jpg"><img src="ENTREGAS.jpg" alt="Entregas" loading="lazy"></a>
         <a href="PASOS PARA COMPRAS.jpeg"><img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras" loading="lazy"></a>
@@ -121,6 +155,15 @@
       </div>
     </section>
 
+    <!-- 3. RUTAS FORÁNEAS (AHORA ABAJO) -->
+    <section id="rutas">
+      <h2>Información sobre Rutas Foráneas</h2>
+      <div class="galeria">
+        <a href="RUTFOR.jpg"><img src="RUTFOR.jpg" alt="Rutas Foráneas" loading="lazy"></a>
+      </div>
+    </section>
+
+    <!-- 4. VIDEO -->
     <section id="video">
       <h2>Conoce Más de Nosotros</h2>
       <video src="video muebleca1.mp4" preload="none" poster="CAT 00.jpg" controls playsinline></video>
@@ -142,6 +185,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
