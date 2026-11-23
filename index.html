@@ -6,6 +6,9 @@
   <title>Catálogo Muebleca</title>
   <link rel="preconnect" href="https://googleapis.com">
   <link href="https://googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- 1. ESTILOS DE ZOOM REAL (FANCYBOX) -->
+  <link rel="stylesheet" href="https://jsdelivr.net" />
 
   <style>
     :root {
@@ -110,7 +113,7 @@
       margin-bottom: 20px;
     }
 
-    /* CUADRÍCULA: 2 COLUMNAS EN PC, 1 COLUMNA GRANDE EN CELULAR */
+    /* CUADRÍCULA: 2 COLUMNAS EN PC, 1 COLUMNA EN CELULAR */
     .galeria {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -124,31 +127,22 @@
       }
     }
 
-    /* EFECTO LUPA EN EL MISMO LUGAR */
-    .lupa-contenedor {
-      position: relative;
-      overflow: hidden;
+    .galeria a {
+      display: block;
       border-radius: 10px;
+      overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-      background: #fff;
-      cursor: zoom-in;
+      transition: transform 0.25s ease;
     }
 
-    .lupa-contenedor img {
+    .galeria a:hover {
+      transform: translateY(-3px);
+    }
+
+    .galeria img {
       width: 100%;
       height: auto;
       display: block;
-      transition: transform 0.2s ease-out;
-      transform-origin: center center;
-    }
-
-    .lupa-contenedor.con-zoom {
-      cursor: zoom-out;
-      box-shadow: 0 8px 25px rgba(106, 27, 154, 0.35);
-    }
-
-    .lupa-contenedor.con-zoom img {
-      transform: scale(1.7);
     }
 
     /* VIDEO */
@@ -227,39 +221,39 @@
 
     <section id="catalogo">
       <h1>Catálogo de Productos</h1>
-      <p class="subtitulo">Toca o haz clic en una imagen para activar la lupa y mueve el dedo o cursor para explorar</p>
+      <p class="subtitulo">Toca cualquier foto para abrirla y vuelve a tocarla para hacer zoom</p>
       <div class="galeria">
-        <div class="lupa-contenedor"><img src="CAT 00.jpg" alt="Catálogo 00"></div>
-        <div class="lupa-contenedor"><img src="CAT 01.jpg" alt="Catálogo 01"></div>
-        <div class="lupa-contenedor"><img src="CAT 02.jpg" alt="Catálogo 02"></div>
-        <div class="lupa-contenedor"><img src="CAT 03.jpg" alt="Catálogo 03"></div>
-        <div class="lupa-contenedor"><img src="CAT 04.jpg" alt="Catálogo 04"></div>
-        <div class="lupa-contenedor"><img src="CAT 05.jpg" alt="Catálogo 05"></div>
-        <div class="lupa-contenedor"><img src="CAT 06.jpg" alt="Catálogo 06"></div>
-        <div class="lupa-contenedor"><img src="CAT 07.jpg" alt="Catálogo 07"></div>
-        <div class="lupa-contenedor"><img src="CAT 08.jpg" alt="Catálogo 08"></div>
-        <div class="lupa-contenedor"><img src="CAT 09.jpg" alt="Catálogo 09"></div>
-        <div class="lupa-contenedor"><img src="CAT 10.jpg" alt="Catálogo 10"></div>
-        <div class="lupa-contenedor"><img src="CAT 11.jpg" alt="Catálogo 11"></div>
-        <div class="lupa-contenedor"><img src="CAT 12.jpg" alt="Catálogo 12"></div>
-        <div class="lupa-contenedor"><img src="CAT 13.jpg" alt="Catálogo 13"></div>
-        <div class="lupa-contenedor"><img src="CAT 14.jpg" alt="Catálogo 14"></div>
-        <div class="lupa-contenedor"><img src="CAT 15.jpg" alt="Catálogo 15"></div>
-        <div class="lupa-contenedor"><img src="CAT 16.jpg" alt="Catálogo 16"></div>
-        <div class="lupa-contenedor"><img src="CAT 17.jpg" alt="Catálogo 17"></div>
-        <div class="lupa-contenedor"><img src="CAT 18.jpg" alt="Catálogo 18"></div>
-        <div class="lupa-contenedor"><img src="CAT 19.jpg" alt="Catálogo 19"></div>
-        <div class="lupa-contenedor"><img src="CAT 20.jpg" alt="Catálogo 20"></div>
-        <div class="lupa-contenedor"><img src="CAT 21.jpg" alt="Catálogo 21"></div>
-        <div class="lupa-contenedor"><img src="CAT 22.jpg" alt="Catálogo 22"></div>
-        <div class="lupa-contenedor"><img src="CAT 23.jpg" alt="Catálogo 23"></div>
-        <div class="lupa-contenedor"><img src="CAT 24.jpg" alt="Catálogo 24"></div>
-        <div class="lupa-contenedor"><img src="CAT 25.jpg" alt="Catálogo 25"></div>
-        <div class="lupa-contenedor"><img src="CAT 26.jpg" alt="Catálogo 26"></div>
-        <div class="lupa-contenedor"><img src="CAT 27.jpg" alt="Catálogo 27"></div>
-        <div class="lupa-contenedor"><img src="CAT 28.jpg" alt="Catálogo 28"></div>
-        <div class="lupa-contenedor"><img src="CAT 29.jpg" alt="Catálogo 29"></div>
-        <div class="lupa-contenedor"><img src="CAT 30.jpg" alt="Catálogo 30"></div>
+        <a href="CAT 00.jpg" data-fancybox="catalogo"><img src="CAT 00.jpg" alt="Catálogo 00"></a>
+        <a href="CAT 01.jpg" data-fancybox="catalogo"><img src="CAT 01.jpg" alt="Catálogo 01"></a>
+        <a href="CAT 02.jpg" data-fancybox="catalogo"><img src="CAT 02.jpg" alt="Catálogo 02"></a>
+        <a href="CAT 03.jpg" data-fancybox="catalogo"><img src="CAT 03.jpg" alt="Catálogo 03"></a>
+        <a href="CAT 04.jpg" data-fancybox="catalogo"><img src="CAT 04.jpg" alt="Catálogo 04"></a>
+        <a href="CAT 05.jpg" data-fancybox="catalogo"><img src="CAT 05.jpg" alt="Catálogo 05"></a>
+        <a href="CAT 06.jpg" data-fancybox="catalogo"><img src="CAT 06.jpg" alt="Catálogo 06"></a>
+        <a href="CAT 07.jpg" data-fancybox="catalogo"><img src="CAT 07.jpg" alt="Catálogo 07"></a>
+        <a href="CAT 08.jpg" data-fancybox="catalogo"><img src="CAT 08.jpg" alt="Catálogo 08"></a>
+        <a href="CAT 09.jpg" data-fancybox="catalogo"><img src="CAT 09.jpg" alt="Catálogo 09"></a>
+        <a href="CAT 10.jpg" data-fancybox="catalogo"><img src="CAT 10.jpg" alt="Catálogo 10"></a>
+        <a href="CAT 11.jpg" data-fancybox="catalogo"><img src="CAT 11.jpg" alt="Catálogo 11"></a>
+        <a href="CAT 12.jpg" data-fancybox="catalogo"><img src="CAT 12.jpg" alt="Catálogo 12"></a>
+        <a href="CAT 13.jpg" data-fancybox="catalogo"><img src="CAT 13.jpg" alt="Catálogo 13"></a>
+        <a href="CAT 14.jpg" data-fancybox="catalogo"><img src="CAT 14.jpg" alt="Catálogo 14"></a>
+        <a href="CAT 15.jpg" data-fancybox="catalogo"><img src="CAT 15.jpg" alt="Catálogo 15"></a>
+        <a href="CAT 16.jpg" data-fancybox="catalogo"><img src="CAT 16.jpg" alt="Catálogo 16"></a>
+        <a href="CAT 17.jpg" data-fancybox="catalogo"><img src="CAT 17.jpg" alt="Catálogo 17"></a>
+        <a href="CAT 18.jpg" data-fancybox="catalogo"><img src="CAT 18.jpg" alt="Catálogo 18"></a>
+        <a href="CAT 19.jpg" data-fancybox="catalogo"><img src="CAT 19.jpg" alt="Catálogo 19"></a>
+        <a href="CAT 20.jpg" data-fancybox="catalogo"><img src="CAT 20.jpg" alt="Catálogo 20"></a>
+        <a href="CAT 21.jpg" data-fancybox="catalogo"><img src="CAT 21.jpg" alt="Catálogo 21"></a>
+        <a href="CAT 22.jpg" data-fancybox="catalogo"><img src="CAT 22.jpg" alt="Catálogo 22"></a>
+        <a href="CAT 23.jpg" data-fancybox="catalogo"><img src="CAT 23.jpg" alt="Catálogo 23"></a>
+        <a href="CAT 24.jpg" data-fancybox="catalogo"><img src="CAT 24.jpg" alt="Catálogo 24"></a>
+        <a href="CAT 25.jpg" data-fancybox="catalogo"><img src="CAT 25.jpg" alt="Catálogo 25"></a>
+        <a href="CAT 26.jpg" data-fancybox="catalogo"><img src="CAT 26.jpg" alt="Catálogo 26"></a>
+        <a href="CAT 27.jpg" data-fancybox="catalogo"><img src="CAT 27.jpg" alt="Catálogo 27"></a>
+        <a href="CAT 28.jpg" data-fancybox="catalogo"><img src="CAT 28.jpg" alt="Catálogo 28"></a>
+        <a href="CAT 29.jpg" data-fancybox="catalogo"><img src="CAT 29.jpg" alt="Catálogo 29"></a>
+        <a href="CAT 30.jpg" data-fancybox="catalogo"><img src="CAT 30.jpg" alt="Catálogo 30"></a>
       </div>
     </section>
 
@@ -267,7 +261,7 @@
       <h2>Información sobre Rutas</h2>
       <p class="subtitulo">Consulta nuestras rutas foráneas y locales</p>
       <div class="galeria">
-        <div class="lupa-contenedor"><img src="RUTFOR.jpg" alt="Rutas Foráneas"></div>
+        <a href="RUTFOR.jpg" data-fancybox="info"><img src="RUTFOR.jpg" alt="Rutas Foráneas"></a>
       </div>
     </section>
 
@@ -275,9 +269,9 @@
       <h2>Rutas Locales, Entregas y Compras</h2>
       <p class="subtitulo">Todo lo que necesitas saber para realizar tu pedido</p>
       <div class="galeria">
-        <div class="lupa-contenedor"><img src="ENTREGAS.jpg" alt="Entregas"></div>
-        <div class="lupa-contenedor"><img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras"></div>
-        <div class="lupa-contenedor"><img src="SHOPING.jpg" alt="Shopping"></div>
+        <a href="ENTREGAS.jpg" data-fancybox="info"><img src="ENTREGAS.jpg" alt="Entregas"></a>
+        <a href="PASOS PARA COMPRAS.jpeg" data-fancybox="info"><img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras"></a>
+        <a href="SHOPING.jpg" data-fancybox="info"><img src="SHOPING.jpg" alt="Shopping"></a>
       </div>
     </section>
 
@@ -285,7 +279,7 @@
       <h2>Conoce Más de Nosotros</h2>
       <p class="subtitulo">Presentación Muebleca</p>
       <div class="video-caja">
-        <video src="video mueblecal.mp4" autoplay muted loop playsinline controls></video>
+        <video src="video muebleca1.mp4" autoplay muted loop playsinline controls></video>
       </div>
     </section>
 
@@ -297,68 +291,23 @@
 
   <button class="btn-arriba" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Volver arriba">↑</button>
 
+  <!-- 2. SCRIPT DE ZOOM REAL (FANCYBOX) -->
+  <script src="https://jsdelivr.net"></script>
   <script>
-    // LUPA INTERACTIVA EN EL MISMO LUGAR
-    document.querySelectorAll('.lupa-contenedor').forEach(caja => {
-      const img = caja.querySelector('img');
-
-      caja.addEventListener('click', (e) => {
-        caja.classList.toggle('con-zoom');
-        if (caja.classList.contains('con-zoom')) {
-          moverLupa(e, caja, img);
-        } else {
-          img.style.transformOrigin = 'center center';
-        }
-      });
-
-      caja.addEventListener('mousemove', (e) => {
-        if (caja.classList.contains('con-zoom')) {
-          moverLupa(e, caja, img);
-        }
-      });
-
-      caja.addEventListener('mouseleave', () => {
-        caja.classList.remove('con-zoom');
-        img.style.transformOrigin = 'center center';
-      });
+    Fancybox.bind("[data-fancybox]", {
+      Images: {
+        zoom: true,
+        Panzoom: {
+          maxScale: 3, // Permite acercar hasta 3x con un toque o pellizco
+        },
+      },
     });
-
-    function moverLupa(e, caja, img) {
-      const rect = caja.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      img.style.transformOrigin = `${x}% ${y}%`;
-    }
 
     // ADORNOS NAVIDEÑOS
     const figuras = ['❄️', '❅', '🎄', '✨'];
     function crearAdorno() {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      const adorno = document.createElement('div');
+      adorno.classList.add('adorno-navidad');
+      adorno.innerText = figuras[Math.floor(Math.random() * figuras.length)];
+      adorno.style.left = Math.random() * 95 + 'vw';
+      adorno.style.fontSize = (Math.random() * 12 + 14) + 'px';
