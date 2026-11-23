@@ -4,299 +4,145 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo Muebleca</title>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://jsdelivr.net" crossorigin>
-  <link href="https://googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-
   <style>
-    :root {
-      --primario: #6a1b9a;
-      --primario-oscuro: #4a148c;
-      --texto: #222222;
-      --tarjeta-bg: rgba(255, 255, 255, 0.94);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
     body {
-      font-family: 'Poppins', sans-serif;
-      color: var(--texto);
-      background-image: url("fondo1.jpg");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      line-height: 1.6;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #222;
+      background: #f4eef8 url("fondo1.jpg") center/cover fixed no-repeat;
+      line-height: 1.5;
     }
-
     header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: sticky; top: 0; z-index: 100;
       background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-      padding: 12px 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 10px 14px;
+      text-align: center;
     }
-
-    .nav-contenedor {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--primario);
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
+    .logo { font-size: 1.2rem; font-weight: 700; color: #6a1b9a; margin-bottom: 6px; }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
     nav a {
-      text-decoration: none;
-      color: var(--texto);
-      font-weight: 600;
-      font-size: 0.85rem;
-      padding: 6px 12px;
-      border-radius: 20px;
-      background: #f3e5f5;
-      transition: 0.3s;
+      text-decoration: none; color: #333; font-weight: 600; font-size: 0.85rem;
+      padding: 5px 12px; border-radius: 16px; background: #f3e5f5;
     }
-
-    nav a:hover {
-      background: var(--primario);
-      color: #fff;
-    }
-
-    .contenedor {
-      max-width: 1000px;
-      margin: 24px auto;
-      padding: 0 14px;
-    }
-
+    .contenedor { max-width: 960px; margin: 20px auto; padding: 0 12px; }
     section {
-      background: var(--tarjeta-bg);
-      border-radius: 16px;
-      padding: 24px 16px;
-      margin-bottom: 30px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 14px; padding: 20px 14px; margin-bottom: 24px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
-
-    h1, h2 {
-      text-align: center;
-      color: var(--primario);
-      font-size: 1.5rem;
-      margin-bottom: 6px;
-    }
-
-    .subtitulo {
-      text-align: center;
-      color: #555;
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-    }
-
+    h1, h2 { text-align: center; color: #6a1b9a; font-size: 1.4rem; margin-bottom: 4px; }
+    .sub { text-align: center; color: #666; font-size: 0.85rem; margin-bottom: 16px; }
     .galeria {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      gap: 14px;
     }
-
-    @media (max-width: 650px) {
-      .galeria {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
+    @media (max-width: 600px) {
+      .galeria { grid-template-columns: 1fr; }
     }
-
-    .galeria a {
-      display: block;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-      transition: transform 0.25s ease;
+    .galeria a { display: block; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+    .galeria img { width: 100%; height: auto; display: block; }
+    .oculto { display: none !important; }
+    .btn-mas {
+      display: block; margin: 20px auto 0; padding: 12px 28px;
+      background: #6a1b9a; color: #fff; border: none; border-radius: 25px;
+      font-size: 0.95rem; font-weight: 600; cursor: pointer;
     }
-
-    .galeria a:hover {
-      transform: translateY(-3px);
-    }
-
-    .galeria img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .video-caja {
-      max-width: 800px;
-      margin: 0 auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .video-caja video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .btn-arriba {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--primario);
-      color: #fff;
-      border: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      z-index: 999;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.92);
-      font-size: 0.85rem;
-      color: #555;
-    }
-
-    .adorno-navidad {
-      position: fixed;
-      top: -30px;
-      z-index: 9999;
-      user-select: none;
-      pointer-events: none;
-      animation: caer linear forwards;
-    }
-
-    @keyframes caer {
-      to {
-        transform: translateY(105vh) rotate(360deg);
-      }
-    }
+    video { width: 100%; max-width: 800px; margin: 0 auto; display: block; border-radius: 10px; }
+    footer { text-align: center; padding: 16px; background: rgba(255,255,255,0.9); font-size: 0.8rem; color: #555; }
   </style>
 </head>
-
 <body>
 
   <header>
-    <div class="nav-contenedor">
-      <div class="logo">CATÁLOGO MUEBLECA</div>
-      <nav>
-        <a href="#catalogo">Catálogo</a>
-        <a href="#rutas">Rutas</a>
-        <a href="#compras">Entregas y Metodos de compra</a>
-        <a href="#video">Video</a>
-      </nav>
-    </div>
+    <div class="logo">CATÁLOGO MUEBLECA</div>
+    <nav>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#rutas">Rutas</a>
+      <a href="#compras">Entregas y Compras</a>
+      <a href="#video">Video</a>
+    </nav>
   </header>
 
   <main class="contenedor">
-
     <section id="catalogo">
       <h1>Catálogo de Productos</h1>
-      <p class="subtitulo">Toca cualquier foto para abrirla y vuelve a tocarla para hacer zoom</p>
-      <div class="galeria">
-        <a href="CAT 00.jpg" data-fancybox="catalogo"><img src="CAT 00.jpg" alt="Catálogo 00"></a>
-        <a href="CAT 01.jpg" data-fancybox="catalogo"><img src="CAT 01.jpg" alt="Catálogo 01"></a>
-        <a href="CAT 02.jpg" data-fancybox="catalogo"><img src="CAT 02.jpg" alt="Catálogo 02" loading="lazy"></a>
-        <a href="CAT 03.jpg" data-fancybox="catalogo"><img src="CAT 03.jpg" alt="Catálogo 03" loading="lazy"></a>
-        <a href="CAT 04.jpg" data-fancybox="catalogo"><img src="CAT 04.jpg" alt="Catálogo 04" loading="lazy"></a>
-        <a href="CAT 05.jpg" data-fancybox="catalogo"><img src="CAT 05.jpg" alt="Catálogo 05" loading="lazy"></a>
-        <a href="CAT 06.jpg" data-fancybox="catalogo"><img src="CAT 06.jpg" alt="Catálogo 06" loading="lazy"></a>
-        <a href="CAT 07.jpg" data-fancybox="catalogo"><img src="CAT 07.jpg" alt="Catálogo 07" loading="lazy"></a>
-        <a href="CAT 08.jpg" data-fancybox="catalogo"><img src="CAT 08.jpg" alt="Catálogo 08" loading="lazy"></a>
-        <a href="CAT 09.jpg" data-fancybox="catalogo"><img src="CAT 09.jpg" alt="Catálogo 09" loading="lazy"></a>
-        <a href="CAT 10.jpg" data-fancybox="catalogo"><img src="CAT 10.jpg" alt="Catálogo 10" loading="lazy"></a>
-        <a href="CAT 11.jpg" data-fancybox="catalogo"><img src="CAT 11.jpg" alt="Catálogo 11" loading="lazy"></a>
-        <a href="CAT 12.jpg" data-fancybox="catalogo"><img src="CAT 12.jpg" alt="Catálogo 12" loading="lazy"></a>
-        <a href="CAT 13.jpg" data-fancybox="catalogo"><img src="CAT 13.jpg" alt="Catálogo 13" loading="lazy"></a>
-        <a href="CAT 14.jpg" data-fancybox="catalogo"><img src="CAT 14.jpg" alt="Catálogo 14" loading="lazy"></a>
-        <a href="CAT 15.jpg" data-fancybox="catalogo"><img src="CAT 15.jpg" alt="Catálogo 15" loading="lazy"></a>
-        <a href="CAT 16.jpg" data-fancybox="catalogo"><img src="CAT 16.jpg" alt="Catálogo 16" loading="lazy"></a>
-        <a href="CAT 17.jpg" data-fancybox="catalogo"><img src="CAT 17.jpg" alt="Catálogo 17" loading="lazy"></a>
-        <a href="CAT 18.jpg" data-fancybox="catalogo"><img src="CAT 18.jpg" alt="Catálogo 18" loading="lazy"></a>
-        <a href="CAT 19.jpg" data-fancybox="catalogo"><img src="CAT 19.jpg" alt="Catálogo 19" loading="lazy"></a>
-        <a href="CAT 20.jpg" data-fancybox="catalogo"><img src="CAT 20.jpg" alt="Catálogo 20" loading="lazy"></a>
-        <a href="CAT 21.jpg" data-fancybox="catalogo"><img src="CAT 21.jpg" alt="Catálogo 21" loading="lazy"></a>
-        <a href="CAT 22.jpg" data-fancybox="catalogo"><img src="CAT 22.jpg" alt="Catálogo 22" loading="lazy"></a>
-        <a href="CAT 23.jpg" data-fancybox="catalogo"><img src="CAT 23.jpg" alt="Catálogo 23" loading="lazy"></a>
-        <a href="CAT 24.jpg" data-fancybox="catalogo"><img src="CAT 24.jpg" alt="Catálogo 24" loading="lazy"></a>
-        <a href="CAT 25.jpg" data-fancybox="catalogo"><img src="CAT 25.jpg" alt="Catálogo 25" loading="lazy"></a>
-        <a href="CAT 26.jpg" data-fancybox="catalogo"><img src="CAT 26.jpg" alt="Catálogo 26" loading="lazy"></a>
-        <a href="CAT 27.jpg" data-fancybox="catalogo"><img src="CAT 27.jpg" alt="Catálogo 27" loading="lazy"></a>
-        <a href="CAT 28.jpg" data-fancybox="catalogo"><img src="CAT 28.jpg" alt="Catálogo 28" loading="lazy"></a>
-        <a href="CAT 29.jpg" data-fancybox="catalogo"><img src="CAT 29.jpg" alt="Catálogo 29" loading="lazy"></a>
-        <a href="CAT 30.jpg" data-fancybox="catalogo"><img src="CAT 30.jpg" alt="Catálogo 30" loading="lazy"></a>
+      <p class="sub">Toca cualquier hoja para abrirla sola y acercar con tus dedos</p>
+      <div class="galeria" id="lista-cat">
+        <a href="CAT 00.jpg"><img src="CAT 00.jpg" alt="Catálogo 00"></a>
+        <a href="CAT 01.jpg"><img src="CAT 01.jpg" alt="Catálogo 01"></a>
+        <a href="CAT 02.jpg"><img src="CAT 02.jpg" alt="Catálogo 02"></a>
+        <a href="CAT 03.jpg"><img src="CAT 03.jpg" alt="Catálogo 03"></a>
+        <a href="CAT 04.jpg"><img src="CAT 04.jpg" alt="Catálogo 04" loading="lazy"></a>
+        <a href="CAT 05.jpg"><img src="CAT 05.jpg" alt="Catálogo 05" loading="lazy"></a>
+        <a href="CAT 06.jpg" class="oculto"><img src="CAT 06.jpg" alt="Catálogo 06" loading="lazy"></a>
+        <a href="CAT 07.jpg" class="oculto"><img src="CAT 07.jpg" alt="Catálogo 07" loading="lazy"></a>
+        <a href="CAT 08.jpg" class="oculto"><img src="CAT 08.jpg" alt="Catálogo 08" loading="lazy"></a>
+        <a href="CAT 09.jpg" class="oculto"><img src="CAT 09.jpg" alt="Catálogo 09" loading="lazy"></a>
+        <a href="CAT 10.jpg" class="oculto"><img src="CAT 10.jpg" alt="Catálogo 10" loading="lazy"></a>
+        <a href="CAT 11.jpg" class="oculto"><img src="CAT 11.jpg" alt="Catálogo 11" loading="lazy"></a>
+        <a href="CAT 12.jpg" class="oculto"><img src="CAT 12.jpg" alt="Catálogo 12" loading="lazy"></a>
+        <a href="CAT 13.jpg" class="oculto"><img src="CAT 13.jpg" alt="Catálogo 13" loading="lazy"></a>
+        <a href="CAT 14.jpg" class="oculto"><img src="CAT 14.jpg" alt="Catálogo 14" loading="lazy"></a>
+        <a href="CAT 15.jpg" class="oculto"><img src="CAT 15.jpg" alt="Catálogo 15" loading="lazy"></a>
+        <a href="CAT 16.jpg" class="oculto"><img src="CAT 16.jpg" alt="Catálogo 16" loading="lazy"></a>
+        <a href="CAT 17.jpg" class="oculto"><img src="CAT 17.jpg" alt="Catálogo 17" loading="lazy"></a>
+        <a href="CAT 18.jpg" class="oculto"><img src="CAT 18.jpg" alt="Catálogo 18" loading="lazy"></a>
+        <a href="CAT 19.jpg" class="oculto"><img src="CAT 19.jpg" alt="Catálogo 19" loading="lazy"></a>
+        <a href="CAT 20.jpg" class="oculto"><img src="CAT 20.jpg" alt="Catálogo 20" loading="lazy"></a>
+        <a href="CAT 21.jpg" class="oculto"><img src="CAT 21.jpg" alt="Catálogo 21" loading="lazy"></a>
+        <a href="CAT 22.jpg" class="oculto"><img src="CAT 22.jpg" alt="Catálogo 22" loading="lazy"></a>
+        <a href="CAT 23.jpg" class="oculto"><img src="CAT 23.jpg" alt="Catálogo 23" loading="lazy"></a>
+        <a href="CAT 24.jpg" class="oculto"><img src="CAT 24.jpg" alt="Catálogo 24" loading="lazy"></a>
+        <a href="CAT 25.jpg" class="oculto"><img src="CAT 25.jpg" alt="Catálogo 25" loading="lazy"></a>
+        <a href="CAT 26.jpg" class="oculto"><img src="CAT 26.jpg" alt="Catálogo 26" loading="lazy"></a>
+        <a href="CAT 27.jpg" class="oculto"><img src="CAT 27.jpg" alt="Catálogo 27" loading="lazy"></a>
+        <a href="CAT 28.jpg" class="oculto"><img src="CAT 28.jpg" alt="Catálogo 28" loading="lazy"></a>
+        <a href="CAT 29.jpg" class="oculto"><img src="CAT 29.jpg" alt="Catálogo 29" loading="lazy"></a>
+        <a href="CAT 30.jpg" class="oculto"><img src="CAT 30.jpg" alt="Catálogo 30" loading="lazy"></a>
       </div>
+      <button class="btn-mas" id="btn-mas" onclick="mostrarMas()">Ver más hojas del catálogo</button>
     </section>
 
     <section id="rutas">
       <h2>Información sobre Rutas</h2>
-      <p class="subtitulo">Consulta nuestras rutas foráneas y locales</p>
       <div class="galeria">
-        <a href="RUTFOR.jpg" data-fancybox="info"><img src="RUTFOR.jpg" alt="Rutas Foráneas" loading="lazy"></a>
+        <a href="RUTFOR.jpg"><img src="RUTFOR.jpg" alt="Rutas Foráneas" loading="lazy"></a>
       </div>
     </section>
 
     <section id="compras">
-      <h2>Rutas Locales, Entregas y Pasos para realizar tu compra</h2>
-      <p class="subtitulo">Todo lo que necesitas saber para realizar tu pedido</p>
+      <h2>Rutas Locales, Entregas y Compras</h2>
       <div class="galeria">
-        <a href="ENTREGAS.jpg" data-fancybox="info"><img src="ENTREGAS.jpg" alt="Entregas" loading="lazy"></a>
-        <a href="PASOS PARA COMPRAS.jpeg" data-fancybox="info"><img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras" loading="lazy"></a>
-        <a href="SHOPING.jpg" data-fancybox="info"><img src="SHOPING.jpg" alt="Shopping" loading="lazy"></a>
+        <a href="ENTREGAS.jpg"><img src="ENTREGAS.jpg" alt="Entregas" loading="lazy"></a>
+        <a href="PASOS PARA COMPRAS.jpeg"><img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras" loading="lazy"></a>
+        <a href="SHOPING.jpg"><img src="SHOPING.jpg" alt="Shopping" loading="lazy"></a>
       </div>
     </section>
 
     <section id="video">
       <h2>Conoce Más de Nosotros</h2>
-      <p class="subtitulo">Presentación Muebleca</p>
-      <div class="video-caja">
-        <video src="video muebleca1.mp4" preload="metadata" autoplay muted loop playsinline controls></video>
-      </div>
+      <video src="video mueblecal.mp4" preload="none" poster="CAT 00.jpg" controls playsinline></video>
     </section>
-
   </main>
 
-  <footer>
-    Catálogo Muebleca &copy; 2026 — Todos los derechos reservados
-  </footer>
+  <footer>Catálogo Muebleca &copy; 2026</footer>
 
-  <button class="btn-arriba" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Volver arriba">↑</button>
-
-  <script src="https://jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
   <script>
-    Fancybox.bind("[data-fancybox]", {
-      Images: {
-        zoom: true,
-        Panzoom: {
-          maxScale: 3,
-        },
-      },
-    });
+    function mostrarMas() {
+      const ocultas = document.querySelectorAll('#lista-cat .oculto');
+      for (let i = 0; i < 6 && i < ocultas.length; i++) {
+        ocultas[i].classList.remove('oculto');
+      }
+      if (document.querySelectorAll('#lista-cat .oculto').length === 0) {
+        document.getElementById('btn-mas').style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
 
-    const figuras = ['❄️', '❅', '🎄', '✨'];
-    function crearAdorno() {
-      const adorno = document.createElement('div');
+
 
 
