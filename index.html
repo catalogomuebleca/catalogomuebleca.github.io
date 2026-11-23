@@ -1,97 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-     <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo en Línea</title>
-  <link href="https://unpkg.com" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-    body { background: #0f172a; color: #f8fafc; overflow-x: hidden; }
-
-    /* Portada con degradado animado */
-    header {
-      text-align: center; padding: 70px 20px;
-      background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #ec4899, #06b6d4);
-      background-size: 400% 400%;
-      animation: gradiente 12s ease infinite;
-    }
-    @keyframes gradiente {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    header h1 { font-size: 2.6rem; margin-bottom: 10px; }
-
-    /* Botones de filtro */
-    .filtros {
-      display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
-      margin: 35px 20px 10px;
-    }
-    .btn-filtro {
-      background: #1e293b; color: #cbd5e1; border: 1px solid #334155;
-      padding: 10px 22px; border-radius: 30px; cursor: pointer; font-weight: 600;
-      transition: all 0.3s;
-    }
-    .btn-filtro:hover, .btn-filtro.activo {
-      background: #38bdf8; color: #0f172a; border-color: #38bdf8; transform: translateY(-2px);
-    }
-
-    /* Cuadrícula del catálogo */
-    .contenedor { max-width: 1100px; margin: 30px auto 60px; padding: 0 20px; }
-    .productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
-
-    /* Tarjeta 3D */
-    .tarjeta {
-      background: #1e293b; border-radius: 16px; padding: 20px; text-align: center;
-      border: 1px solid rgba(255,255,255,0.08);
-      transform-style: preserve-3d;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-    .tarjeta.oculto { display: none; }
-    .tarjeta img {
-      width: 100%; height: 200px; object-fit: cover; border-radius: 12px;
-      margin-bottom: 15px; transform: translateZ(20px);
-    }
-    .etiqueta {
-      display: inline-block; font-size: 0.75rem; background: rgba(56, 189, 248, 0.15);
-      color: #38bdf8; padding: 4px 12px; border-radius: 20px; margin-bottom: 8px;
-    }
-    .precio { font-size: 1.35rem; color: #38bdf8; font-weight: bold; margin: 10px 0 15px; }
-    
-    .btn-detalles {
-      background: transparent; color: #38bdf8; border: 2px solid #38bdf8;
-      padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer;
-      width: 100%; transition: all 0.3s;
-    }
-    .btn-detalles:hover { background: #38bdf8; color: #0f172a; }
-
-    /* Ventana Modal (Vista Rápida) */
-    .modal-fondo {
-      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75);
-      backdrop-filter: blur(5px); z-index: 200; align-items: center; justify-content: center; padding: 20px;
-    }
-    .modal-fondo.abierto { display: flex; animation: aparecer 0.3s ease; }
-    @keyframes aparecer { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-    
-    .modal-contenido {
-      background: #1e293b; max-width: 450px; width: 100%; border-radius: 20px;
-      padding: 25px; position: relative; text-align: center; border: 1px solid #334155;
-    }
-    .cerrar-modal {
-      position: absolute; top: 15px; right: 20px; font-size: 1.6rem;
-      cursor: pointer; color: #94a3b8;
-    }
-    .modal-contenido img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; margin-bottom: 15px; }
-    .modal-desc { color: #cbd5e1; font-size: 0.95rem; line-height: 1.5; margin: 12px 0; }
-    .btn-whatsapp {
-      display: inline-block; background: #22c55e; color: white; text-decoration: none;
-      padding: 12px 24px; border-radius: 10px; font-weight: bold; margin-top: 10px; width: 100%;
-      transition: background 0.3s;
-    }
-    .btn-whatsapp:hover { background: #16a34a; }
-  </style>
-</head>
 <body>
     <header>
         <h1><center>CATALOGO MUEBLECA</center></h1>
@@ -145,6 +54,7 @@
 </body>
 
 </html>
+
 
 
 
