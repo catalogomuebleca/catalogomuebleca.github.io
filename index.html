@@ -119,39 +119,22 @@
       gap: 20px;
     }
 
-    .item-foto {
-      position: relative;
-      overflow: hidden;
+    .grid-catalogo img, .grid-info img {
+      width: 100%;
+      height: auto;
+      display: block;
       border-radius: 10px;
-      background: #fff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       cursor: zoom-in;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .item-foto:hover {
+    .grid-catalogo img:hover, .grid-info img:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
     }
 
-    .item-foto img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .etiqueta-pagina {
-      position: absolute;
-      bottom: 8px;
-      right: 8px;
-      background: rgba(0, 0, 0, 0.65);
-      color: #fff;
-      font-size: 0.75rem;
-      padding: 3px 8px;
-      border-radius: 6px;
-    }
-
-    /* SECCIÓN DE RUTAS Y ENTREGAS (MÁS AMPLIAS) */
+    /* SECCIÓN DE RUTAS Y ENTREGAS */
     .grid-info {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -272,11 +255,43 @@
 
   <main class="contenedor">
 
-    <!-- SECCIÓN 1: CATÁLOGO DE PRODUCTOS -->
+    <!-- SECCIÓN 1: TUS 31 IMÁGENES DEL CATÁLOGO -->
     <section id="catalogo">
       <h1>Catálogo de Productos</h1>
-      <p class="subtitulo">Haz clic en cualquier imagen para verla en tamaño completo</p>
-      <div class="grid-catalogo" id="contenedor-catalogo"></div>
+      <p class="subtitulo">Toca o haz clic en cualquier imagen para verla en pantalla completa</p>
+      <div class="grid-catalogo">
+        <img src="CAT 00.jpg" alt="Catálogo 00" onclick="abrirVisor(this.src)">
+        <img src="CAT 01.jpg" alt="Catálogo 01" onclick="abrirVisor(this.src)">
+        <img src="CAT 02.jpg" alt="Catálogo 02" onclick="abrirVisor(this.src)">
+        <img src="CAT 03.jpg" alt="Catálogo 03" onclick="abrirVisor(this.src)">
+        <img src="CAT 04.jpg" alt="Catálogo 04" onclick="abrirVisor(this.src)">
+        <img src="CAT 05.jpg" alt="Catálogo 05" onclick="abrirVisor(this.src)">
+        <img src="CAT 06.jpg" alt="Catálogo 06" onclick="abrirVisor(this.src)">
+        <img src="CAT 07.jpg" alt="Catálogo 07" onclick="abrirVisor(this.src)">
+        <img src="CAT 08.jpg" alt="Catálogo 08" onclick="abrirVisor(this.src)">
+        <img src="CAT 09.jpg" alt="Catálogo 09" onclick="abrirVisor(this.src)">
+        <img src="CAT 10.jpg" alt="Catálogo 10" onclick="abrirVisor(this.src)">
+        <img src="CAT 11.jpg" alt="Catálogo 11" onclick="abrirVisor(this.src)">
+        <img src="CAT 12.jpg" alt="Catálogo 12" onclick="abrirVisor(this.src)">
+        <img src="CAT 13.jpg" alt="Catálogo 13" onclick="abrirVisor(this.src)">
+        <img src="CAT 14.jpg" alt="Catálogo 14" onclick="abrirVisor(this.src)">
+        <img src="CAT 15.jpg" alt="Catálogo 15" onclick="abrirVisor(this.src)">
+        <img src="CAT 16.jpg" alt="Catálogo 16" onclick="abrirVisor(this.src)">
+        <img src="CAT 17.jpg" alt="Catálogo 17" onclick="abrirVisor(this.src)">
+        <img src="CAT 18.jpg" alt="Catálogo 18" onclick="abrirVisor(this.src)">
+        <img src="CAT 19.jpg" alt="Catálogo 19" onclick="abrirVisor(this.src)">
+        <img src="CAT 20.jpg" alt="Catálogo 20" onclick="abrirVisor(this.src)">
+        <img src="CAT 21.jpg" alt="Catálogo 21" onclick="abrirVisor(this.src)">
+        <img src="CAT 22.jpg" alt="Catálogo 22" onclick="abrirVisor(this.src)">
+        <img src="CAT 23.jpg" alt="Catálogo 23" onclick="abrirVisor(this.src)">
+        <img src="CAT 24.jpg" alt="Catálogo 24" onclick="abrirVisor(this.src)">
+        <img src="CAT 25.jpg" alt="Catálogo 25" onclick="abrirVisor(this.src)">
+        <img src="CAT 26.jpg" alt="Catálogo 26" onclick="abrirVisor(this.src)">
+        <img src="CAT 27.jpg" alt="Catálogo 27" onclick="abrirVisor(this.src)">
+        <img src="CAT 28.jpg" alt="Catálogo 28" onclick="abrirVisor(this.src)">
+        <img src="CAT 29.jpg" alt="Catálogo 29" onclick="abrirVisor(this.src)">
+        <img src="CAT 30.jpg" alt="Catálogo 30" onclick="abrirVisor(this.src)">
+      </div>
     </section>
 
     <!-- SECCIÓN 2: INFORMACIÓN DE RUTAS -->
@@ -284,10 +299,7 @@
       <h2>Información sobre Rutas</h2>
       <p class="subtitulo">Consulta nuestras rutas foráneas y locales</p>
       <div class="grid-info">
-        <div class="item-foto" onclick="abrirVisor('RUTFOR.jpg')">
-          <img src="RUTFOR.jpg" alt="Rutas Foráneas" loading="lazy">
-          <span class="etiqueta-pagina">Rutas Foráneas</span>
-        </div>
+        <img src="RUTFOR.jpg" alt="Rutas Foráneas" onclick="abrirVisor(this.src)">
       </div>
     </section>
 
@@ -296,18 +308,9 @@
       <h2>Rutas Locales, Entregas y Compras</h2>
       <p class="subtitulo">Todo lo que necesitas saber para realizar tu pedido</p>
       <div class="grid-info">
-        <div class="item-foto" onclick="abrirVisor('ENTREGAS.jpg')">
-          <img src="ENTREGAS.jpg" alt="Entregas" loading="lazy">
-          <span class="etiqueta-pagina">Entregas</span>
-        </div>
-        <div class="item-foto" onclick="abrirVisor('PASOS PARA COMPRAS.jpeg')">
-          <img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras" loading="lazy">
-          <span class="etiqueta-pagina">Pasos para Comprar</span>
-        </div>
-        <div class="item-foto" onclick="abrirVisor('SHOPING.jpg')">
-          <img src="SHOPING.jpg" alt="Shopping" loading="lazy">
-          <span class="etiqueta-pagina">Shopping</span>
-        </div>
+        <img src="ENTREGAS.jpg" alt="Entregas" onclick="abrirVisor(this.src)">
+        <img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras" onclick="abrirVisor(this.src)">
+        <img src="SHOPING.jpg" alt="Shopping" onclick="abrirVisor(this.src)">
       </div>
     </section>
 
@@ -316,7 +319,7 @@
       <h2>Conoce Más de Nosotros</h2>
       <p class="subtitulo">Presentación Muebleca</p>
       <div class="video-caja">
-        <!-- RECUERDA: Si cambiaste el nombre del archivo de video, ponlo aquí igual que en tu versión corregida -->
+        <!-- RECUERDA: Pon aquí el nombre exacto de tu archivo .mp4 que ya te funcionó -->
         <video src="video mueblecal.mp4" autoplay muted loop playsinline controls></video>
       </div>
     </section>
@@ -333,51 +336,8 @@
   <!-- VISOR MODAL PARA VER FOTOS EN GRANDE -->
   <div class="visor" id="visor" onclick="cerrarVisor()">
     <span class="cerrar-visor">&times;</span>
-    <img id="imagen-visor" src="" alt="Vista ampliada">
-  </div>
 
-  <script>
-    // 1. GENERADOR AUTOMÁTICO DE LAS 31 IMÁGENES DEL CATÁLOGO (CAT 00 a CAT 30)
-    const contenedorCatalogo = document.getElementById('contenedor-catalogo');
-    for (let i = 0; i <= 30; i++) {
-      const numero = i < 10 ? '0' + i : i;
-      const ruta = `CAT ${numero}.jpg`;
 
-      const tarjeta = document.createElement('div');
-      tarjeta.className = 'item-foto';
-      tarjeta.onclick = () => abrirVisor(ruta);
-
-      tarjeta.innerHTML = `
-        <img src="${ruta}" alt="Catálogo página ${numero}" loading="lazy">
-        <span class="etiqueta-pagina">Pág. ${numero}</span>
-      `;
-      contenedorCatalogo.appendChild(tarjeta);
-    }
-
-    // 2. FUNCIONES DEL VISOR EN PANTALLA COMPLETA
-    const visor = document.getElementById('visor');
-    const imagenVisor = document.getElementById('imagen-visor');
-
-    function abrirVisor(rutaImagen) {
-      imagenVisor.src = rutaImagen;
-      visor.classList.add('activo');
-    }
-
-    function cerrarVisor() {
-      visor.classList.remove('activo');
-    }
-
-    // 3. ADORNOS NAVIDEÑOS
-    const figuras = ['❄️', '❅', '🎄', '✨'];
-    function crearAdorno() {
-      const adorno = document.createElement('div');
-      adorno.classList.add('adorno-navidad');
-      adorno.innerText = figuras[Math.floor(Math.random() * figuras.length)];
-      adorno.style.left = Math.random() * 100 + 'vw';
-      adorno.style.fontSize = (Math.random() * 12 + 14) + 'px';
-      
-      const duracion = Math.random() * 5 + 5;
-      adorno.style.animationDuration = duracion + 's';
 
 
 
