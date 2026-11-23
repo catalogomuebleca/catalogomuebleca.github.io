@@ -93,131 +93,6 @@
   </style>
 </head>
 <body>
-
-  <header>
-    <h1 data-aos="fade-down">Nuestro Catálogo</h1>
-    <p data-aos="fade-up" data-aos-delay="150">Explora nuestros modelos disponibles</p>
-  </header>
-
-  <!-- Filtros de categoría -->
-  <div class="filtros" data-aos="fade-up">
-    <button class="btn-filtro activo" onclick="filtrar('todos', this)">Todos</button>
-    <button class="btn-filtro" onclick="filtrar('accesorios', this)">Accesorios</button>
-    <button class="btn-filtro" onclick="filtrar('electronica', this)">Electrónica</button>
-    <button class="btn-filtro" onclick="filtrar('calzado', this)">Calzado</button>
-  </div>
-
-  <!-- Productos -->
-  <section class="contenedor">
-    <div class="productos">
-      
-      <div class="tarjeta" data-categoria="accesorios" data-aos="zoom-in" data-tilt data-tilt-glare data-tilt-max-glare="0.2">
-        <img src="https://unsplash.com" alt="Reloj">
-        <span class="etiqueta">Accesorios</span>
-        <h3>Reloj Minimalista</h3>
-        <p class="precio">$899 MXN</p>
-        <button class="btn-detalles" onclick="abrirModal('Reloj Minimalista', '$899 MXN', 'https://unsplash.com', 'Correa de piel sintética resistente al agua, caja de acero inoxidable de 40mm. Disponible en negro y café.')">Ver detalles</button>
-      </div>
-
-      <div class="tarjeta" data-categoria="electronica" data-aos="zoom-in" data-aos-delay="100" data-tilt data-tilt-glare data-tilt-max-glare="0.2">
-        <img src="https://unsplash.com" alt="Audífonos">
-        <span class="etiqueta">Electrónica</span>
-        <h3>Audífonos Pro</h3>
-        <p class="precio">$1,250 MXN</p>
-        <button class="btn-detalles" onclick="abrirModal('Audífonos Pro', '$1,250 MXN', 'https://unsplash.com', 'Cancelación activa de ruido, batería de hasta 30 horas y almohadillas acolchadas de alta comodidad.')">Ver detalles</button>
-      </div>
-
-      <div class="tarjeta" data-categoria="calzado" data-aos="zoom-in" data-aos-delay="200" data-tilt data-tilt-glare data-tilt-max-glare="0.2">
-        <img src="https://unsplash.com" alt="Tenis">
-        <span class="etiqueta">Calzado</span>
-        <h3>Tenis Urbanos</h3>
-        <p class="precio">$1,599 MXN</p>
-        <button class="btn-detalles" onclick="abrirModal('Tenis Urbanos', '$1,599 MXN', 'https://unsplash.com', 'Suela ultraligera con amortiguación para uso diario. Tallas disponibles del 25 al 29 MX.')">Ver detalles</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Modal de vista rápida -->
-  <div class="modal-fondo" id="modal" onclick="cerrarModal(event)">
-    <div class="modal-contenido">
-      <span class="cerrar-modal" onclick="document.getElementById('modal').classList.remove('abierto')">&times;</span>
-      <img id="modal-img" src="" alt="Producto">
-      <h2 id="modal-titulo"></h2>
-      <p class="precio" id="modal-precio"></p>
-      <p class="modal-desc" id="modal-desc"></p>
-      <a id="modal-wa" class="btn-whatsapp" href="#" target="_blank">Consultar disponibilidad por WhatsApp</a>
-    </div>
-  </div>
-
-  <script src="https://unpkg.com"></script>
-  <script src="https://cloudflare.com"></script>
-  <script>
-    AOS.init({ duration: 700, once: true });
-
-    // Filtrar productos por categoría
-    function filtrar(categoria, boton) {
-      document.querySelectorAll('.btn-filtro').forEach(b => b.classList.remove('activo'));
-      boton.classList.add('activo');
-
-      document.querySelectorAll('.tarjeta').forEach(tarjeta => {
-        if (categoria === 'todos' || tarjeta.dataset.categoria === categoria) {
-          tarjeta.classList.remove('oculto');
-        } else {
-          tarjeta.classList.add('oculto');
-        }
-      });
-    }
-
-    // Abrir ventana modal con detalles
-    function abrirModal(titulo, precio, img, desc) {
-      document.getElementById('modal-titulo').innerText = titulo;
-      document.getElementById('modal-precio').innerText = precio;
-      document.getElementById('modal-img').src = img;
-      document.getElementById('modal-desc').innerText = desc;
-
-      // Reemplaza 521234567890 con tu número de WhatsApp (código de país + 10 dígitos)
-      const telefono = "521234567890";
-      const mensaje = encodeURIComponent(`Hola, me interesa información sobre: ${titulo} (${precio})`);
-      document.getElementById('modal-wa').href = `https://wa.me{telefono}?text=${mensaje}`;
-
-      document.getElementById('modal').classList.add('abierto');
-    }
-
-    // Cerrar modal al hacer clic fuera de la caja
-    function cerrarModal(e) {
-      if (e.target.id === 'modal') {
-        document.getElementById('modal').classList.remove('abierto');
-      }
-    }
-  </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.5">
-    <title>CATALOGO MUEBLECA</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { color: #CCFFFF; }
-    </style>
-<style>
-  body {
-    /* Ruta local a tu imagen */
-    background-image: url(fondo1.jpg); 
-    
-    /* Hace que la imagen cubra toda la pantalla */
-    background-size: cover; 
-    
-    /* Centra la imagen */
-    background-position: center; 
-    
-    /* Evita que la imagen se repita */
-    background-repeat: no-repeat; 
-    
-    /* Fija la imagen para que no se mueva con el scroll */
-    background-attachment: fixed;
-  }
-</style>
-</head>
-<body>
     <header>
         <h1><center>CATALOGO MUEBLECA</center></h1>
     </header>
@@ -270,6 +145,7 @@
 </body>
 
 </html>
+
 
 
 
