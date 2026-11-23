@@ -1,6 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <style>
+    /* 1. AQUÍ VA EL FONDO FIJO (Dentro de <head>, NO dentro de <body>) */
+    body {
+      background-image: url("fondo1.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    /* 2. AQUÍ VAN LOS EFECTOS DE TUS IMÁGENES */
+    .galeria img {
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.03);
+    }
+  </style>
+    <title>CATALOGO MUEBLECA</title>
+  <style>
+    .galeria img {
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+    </head>
 <body>
     <header>
         <h1><center>CATALOGO MUEBLECA</center></h1>
@@ -54,6 +87,7 @@
 </body>
 
 </html>
+
 
 
 
