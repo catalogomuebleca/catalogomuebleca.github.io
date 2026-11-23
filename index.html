@@ -37,7 +37,7 @@
       font-size: 0.85rem;
       padding: 6px 14px;
       border-radius: 20px;
-      background: #ffca28; /* Amarillo dorado llamativo */
+      background: #ffca28;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       transition: transform 0.2s, background 0.2s;
     }
@@ -53,7 +53,7 @@
       border-radius: 14px; padding: 20px 14px; margin-bottom: 24px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
-    h1, h2 { text-align: center; color: #6a1b9a; font-size: 1.4rem; margin-bottom: 4px; }
+    h1, h2 { text-align: center; color: #6a1b9a; font-size: 1.4rem; margin-bottom: 6px; }
     .sub { text-align: center; color: #666; font-size: 0.85rem; margin-bottom: 16px; }
 
     .galeria {
@@ -73,7 +73,7 @@
       display: block;
       margin: 22px auto 0;
       padding: 13px 30px;
-      background: #e53935; /* Rojo vibrante */
+      background: #e53935;
       color: #ffffff;
       border: none;
       border-radius: 25px;
@@ -98,8 +98,9 @@
     <div class="logo">CATÁLOGO MUEBLECA</div>
     <nav>
       <a href="#catalogo">Catálogo</a>
-      <a href="#compras">Rutas Locales y Metodos de Compra</a>
-      <a href="#rutas">Rutas Foráneas</a>
+      <a href="#rutas-locales">Rutas Locales</a>
+      <a href="#rutas-foraneas">Rutas Foráneas</a>
+      <a href="#pasos-compra">Pasos para comprar</a>
       <a href="#video">Video</a>
     </nav>
   </header>
@@ -145,25 +146,32 @@
       <button class="btn-mas" id="btn-mas" onclick="mostrarMas()">Ver más hojas del catálogo</button>
     </section>
 
-    <!-- 2. RUTAS LOCALES, ENTREGAS Y COMPRAS (AHORA ARRIBA) -->
-    <section id="compras">
-      <h2>Rutas Locales, Entregas y Metodos de compra</h2>
+    <!-- 2. RUTAS LOCALES -->
+    <section id="rutas-locales">
+      <h2>Rutas Locales</h2>
       <div class="galeria">
-        <a href="ENTREGAS.jpg"><img src="ENTREGAS.jpg" alt="Entregas" loading="lazy"></a>
-        <a href="PASOS PARA COMPRAS.jpeg"><img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras" loading="lazy"></a>
-        <a href="SHOPING.jpg"><img src="SHOPING.jpg" alt="Shopping" loading="lazy"></a>
+        <a href="ENTREGAS.jpg"><img src="ENTREGAS.jpg" alt="Rutas Locales y Entregas" loading="lazy"></a>
       </div>
     </section>
 
-    <!-- 3. RUTAS FORÁNEAS (AHORA ABAJO) -->
-    <section id="rutas">
-      <h2>Información sobre Rutas Foráneas</h2>
+    <!-- 3. RUTAS FORÁNEAS -->
+    <section id="rutas-foraneas">
+      <h2>Rutas Foráneas</h2>
       <div class="galeria">
         <a href="RUTFOR.jpg"><img src="RUTFOR.jpg" alt="Rutas Foráneas" loading="lazy"></a>
       </div>
     </section>
 
-    <!-- 4. VIDEO -->
+    <!-- 4. PASOS PARA REALIZAR SU COMPRA -->
+    <section id="pasos-compra">
+      <h2>Pasos para realizar su compra</h2>
+      <div class="galeria">
+        <a href="PASOS PARA COMPRAS.jpeg"><img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para realizar su compra" loading="lazy"></a>
+        <a href="SHOPING.jpg"><img src="SHOPING.jpg" alt="Shopping" loading="lazy"></a>
+      </div>
+    </section>
+
+    <!-- 5. VIDEO -->
     <section id="video">
       <h2>Conoce Más de Nosotros</h2>
       <video src="video muebleca1.mp4" preload="none" poster="CAT 00.jpg" controls playsinline></video>
@@ -185,6 +193,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
