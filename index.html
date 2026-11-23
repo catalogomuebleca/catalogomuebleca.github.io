@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <title>CATALOGO MUEBLECA</title>
 
-    <style>
-    /* 1. AQUÍ VA EL FONDO FIJO (Dentro de <head>, NO dentro de <body>) */
+  <style>
+    /* 1. FONDO FIJO */
     body {
       background-image: url("fondo1.jpg");
       background-size: cover;
@@ -13,20 +14,7 @@
       background-repeat: no-repeat;
     }
 
-    /* 2. AQUÍ VAN LOS EFECTOS DE TUS IMÁGENES */
-    .galeria img {
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-    }
-
-    .galeria img:hover {
-      transform: scale(1.03);
-    }
-  </style>
-    <title>CATALOGO MUEBLECA</title>
-  
-  <!-- AQUÍ VAN LOS EFECTOS -->
-  <style>
+    /* 2. EFECTOS PARA TUS IMÁGENES */
     .galeria img {
       border-radius: 8px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -35,108 +23,107 @@
     .galeria img:hover {
       transform: scale(1.03);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 3. ESTILOS DE NIEVE Y ARBOLITOS (Esto era lo que faltaba) */
+    .adorno-navidad {
+      position: fixed;
+      top: -30px;
+      z-index: 9999;
+      user-select: none;
+      pointer-events: none;
+      animation: caer linear forwards;
+    }
+
+    @keyframes caer {
+      to {
+        transform: translateY(105vh) rotate(360deg);
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="galeria" style="text-align: center;">
-   <img src="CAT 00.jpg" style="width: 700px; height: auto;">
-<img src="CAT 01.jpg" style="width: 700px; height: auto;">
-<img src="CAT 02.jpg" style="width: 700px; height: auto;">
-<img src="CAT 03.jpg" style="width: 700px; height: auto;">
-<img src="CAT 04.jpg" style="width: 700px; height: auto;">
-<img src="CAT 05.jpg" style="width: 700px; height: auto;">
-<img src="CAT 06.jpg" style="width: 700px; height: auto;">
-<img src="CAT 07.jpg" style="width: 700px; height: auto;">
-<img src="CAT 08.jpg" style="width: 700px; height: auto;">
-<img src="CAT 09.jpg" style="width: 700px; height: auto;">
-<img src="CAT 10.jpg" style="width: 700px; height: auto;">
-<img src="CAT 11.jpg" style="width: 700px; height: auto;">
-<img src="CAT 12.jpg" style="width: 700px; height: auto;">
-<img src="CAT 13.jpg" style="width: 700px; height: auto;">
-<img src="CAT 14.jpg" style="width: 700px; height: auto;">
-<img src="CAT 15.jpg" style="width: 700px; height: auto;">
-<img src="CAT 16.jpg" style="width: 700px; height: auto;">
-<img src="CAT 17.jpg" style="width: 700px; height: auto;">
-<img src="CAT 18.jpg" style="width: 700px; height: auto;">
-<img src="CAT 19.jpg" style="width: 700px; height: auto;">
-<img src="CAT 20.jpg" style="width: 700px; height: auto;">
-<img src="CAT 21.jpg" style="width: 700px; height: auto;">
-<img src="CAT 22.jpg" style="width: 700px; height: auto;">
-<img src="CAT 23.jpg" style="width: 700px; height: auto;">
-<img src="CAT 24.jpg" style="width: 700px; height: auto;">
-<img src="CAT 25.jpg" style="width: 700px; height: auto;">
-<img src="CAT 26.jpg" style="width: 700px; height: auto;">
-<img src="CAT 27.jpg" style="width: 700px; height: auto;">
-<img src="CAT 28.jpg" style="width: 700px; height: auto;">
-<img src="CAT 29.jpg" style="width: 700px; height: auto;">
-<img src="CAT 30.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 00.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 01.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 02.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 03.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 04.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 05.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 06.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 07.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 08.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 09.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 10.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 11.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 12.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 13.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 14.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 15.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 16.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 17.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 18.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 19.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 20.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 21.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 22.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 23.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 24.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 25.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 26.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 27.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 28.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 29.jpg" style="width: 700px; height: auto;">
+    <img src="CAT 30.jpg" style="width: 700px; height: auto;">
   </div>
-    <title>CATALOGO MUEBLECA</title>
-  <style>
-    .galeria img {
-      border-radius: 8px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  <main>
+    <h1 style="text-align: center;">INFORMACION SOBRE RUTAS</h1>
+
+    <div class="galeria" style="text-align: center;">
+      <img src="RUTFOR.jpg" style="width: 700px; height: auto;">
+      <h1 style="text-align: center; color: #800080;">INFORMACION PARA RUTAS LOCALES</h1>
+    </div>
+
+    <div class="galeria" style="text-align: center;">
+      <img src="ENTREGAS.jpg" style="width: 700px; height: auto;">
+      <img src="PASOS PARA COMPRAS.jpeg" style="width: 700px; height: auto;">
+      <img src="SHOPING.jpg" style="width: 700px; height: auto;">
+    </div>
+
+    <p style="text-align: center;">
+      <video src="video mueblecal.mp4" width="80%" autoplay muted loop controls></video>
+    </p>
+  </main>
+
+  <!-- 4. SCRIPT DE NIEVE Y ARBOLITOS -->
+  <script>
+    const figuras = ['❄️', '❅', '🎄', '✨'];
+
+    function crearAdorno() {
+      const adorno = document.createElement('div');
+      adorno.classList.add('adorno-navidad');
+      adorno.innerText = figuras[Math.floor(Math.random() * figuras.length)];
+      adorno.style.left = Math.random() * 100 + 'vw';
+      adorno.style.fontSize = (Math.random() * 12 + 14) + 'px';
+      
+      const duracion = Math.random() * 5 + 5;
+      adorno.style.animationDuration = duracion + 's';
+      adorno.style.opacity = Math.random() * 0.5 + 0.5;
+
+      document.body.appendChild(adorno);
+
+      setTimeout(() => {
+        adorno.remove();
+      }, duracion * 1000);
     }
 
-    .galeria img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-  </style>
-    <main>
-        <h1><center>INFORMACION SOBRE RUTAS</center></h1>
-    </header>
-        <div style="text-align: center;">
-<img src="RUTFOR.jpg" style="width: 700px; height: auto;">
-        <h1><center color: #800080>INFORMACION PARA RUTAS LOCALES</center></h1>
-          </div>  
-        <div style="text-align: center;">
-<img src="ENTREGAS.jpg" style="width: 700px; height: auto;">
-<img src="PASOS PARA COMPRAS.jpeg" style="width: 700px; height: auto;">          
-<img src="SHOPING.jpg" style="width: 700px; height: auto;">
-</div>
-        <p align="center">
-  <video src="video muebleca1.mp4" width="80%" autoplay muted loop controls></video>
-</p>
-    </main>
-    <script>
-  // Cambia aquí qué figuras quieres que caigan (puedes dejar solo copos o mezclar)
-  const figuras = ['❄️', '❅', '🎄', '✨']; 
-
-  function crearAdorno() {
-    const adorno = document.createElement('div');
-    adorno.classList.add('adorno-navidad');
-    
-    // Elige una figura al azar de la lista
-    adorno.innerText = figuras[Math.floor(Math.random() * figuras.length)];
-    
-    // Posición horizontal aleatoria
-    adorno.style.left = Math.random() * 100 + 'vw';
-    
-    // Tamaño aleatorio (entre 12px y 24px para que sea discreto)
-    adorno.style.fontSize = (Math.random() * 12 + 12) + 'px';
-    
-    // Velocidad de caída (entre 5 y 10 segundos)
-    const duracion = Math.random() * 5 + 5;
-    adorno.style.animationDuration = duracion + 's';
-    
-    // Un poco de transparencia para que no estorbe la lectura
-    adorno.style.opacity = Math.random() * 0.5 + 0.4;
-
-    document.body.appendChild(adorno);
-
-    // Elimina el elemento cuando termina de caer para no alentar la página
-    setTimeout(() => {
-      adorno.remove();
-    }, duracion * 1000);
-  }
-
-  // Crea un adorno nuevo cada 500 milisegundos (aumenta el número si quieres menos cantidad)
-  setInterval(crearAdorno, 1000);
-</script>
+    setInterval(crearAdorno, 800);
+  </script>
 </body>
 </html>
+
 
 
 
