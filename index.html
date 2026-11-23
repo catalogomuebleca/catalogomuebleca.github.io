@@ -156,38 +156,58 @@
       display: block;
     }
 
-    /* VISOR EN PANTALLA COMPLETA (LIGHTBOX) */
+    /* VISOR EN PANTALLA COMPLETA CON ZOOM REAL */
     .visor {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.88);
+      background: rgba(0, 0, 0, 0.9);
       z-index: 2000;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      cursor: zoom-out;
+      overflow: auto;
+      padding: 40px 20px;
+      text-align: center;
     }
 
     .visor.activo {
       display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .visor.activo.con-zoom {
+      display: block;
     }
 
     .visor img {
       max-width: 95%;
-      max-height: 92vh;
+      max-height: 90vh;
       border-radius: 8px;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      cursor: zoom-in;
+      transition: transform 0.25s ease;
+    }
+
+    .visor img.ampliada {
+      max-width: none;
+      max-height: none;
+      width: 150%;
+      cursor: zoom-out;
     }
 
     .cerrar-visor {
-      position: absolute;
-      top: 18px;
+      position: fixed;
+      top: 15px;
       right: 25px;
+      background: rgba(0, 0, 0, 0.6);
       color: #fff;
-      font-size: 2rem;
+      width: 42px;
+      height: 42px;
+      line-height: 40px;
+      border-radius: 50%;
+      font-size: 1.8rem;
       font-weight: bold;
       cursor: pointer;
+      z-index: 2001;
     }
 
     /* BOTÓN VOLVER ARRIBA */
@@ -258,7 +278,7 @@
     <!-- SECCIÓN 1: TUS 31 IMÁGENES DEL CATÁLOGO -->
     <section id="catalogo">
       <h1>Catálogo de Productos</h1>
-      <p class="subtitulo">Toca o haz clic en cualquier imagen para verla en pantalla completa</p>
+      <p class="subtitulo">Toca una imagen para abrirla y vuélvela a tocar para hacer zoom</p>
       <div class="grid-catalogo">
         <img src="CAT 00.jpg" alt="Catálogo 00" onclick="abrirVisor(this.src)">
         <img src="CAT 01.jpg" alt="Catálogo 01" onclick="abrirVisor(this.src)">
@@ -319,7 +339,7 @@
       <h2>Conoce Más de Nosotros</h2>
       <p class="subtitulo">Presentación Muebleca</p>
       <div class="video-caja">
-        <!-- RECUERDA: Pon aquí el nombre exacto de tu archivo .mp4 que ya te funcionó -->
+        <!-- RECUERDA: Pon aquí el nombre exacto de tu archivo .mp4 -->
         <video src="video mueblecal.mp4" autoplay muted loop playsinline controls></video>
       </div>
     </section>
@@ -327,15 +347,8 @@
   </main>
 
   <footer>
-    Catálogo Muebleca &copy; 2026 — Todos los derechos reservados
-  </footer>
 
-  <!-- BOTÓN SUBIR -->
-  <button class="btn-arriba" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Volver arriba">↑</button>
 
-  <!-- VISOR MODAL PARA VER FOTOS EN GRANDE -->
-  <div class="visor" id="visor" onclick="cerrarVisor()">
-    <span class="cerrar-visor">&times;</span>
 
 
 
