@@ -2,30 +2,242 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>CATALOGO MUEBLECA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo Muebleca</title>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link href="https://googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* 1. FONDO FIJO */
+    :root {
+      --primario: #6a1b9a;
+      --primario-oscuro: #4a148c;
+      --texto: #222222;
+      --tarjeta-bg: rgba(255, 255, 255, 0.92);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
     body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--texto);
       background-image: url("fondo1.jpg");
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       background-repeat: no-repeat;
+      line-height: 1.6;
     }
 
-    /* 2. EFECTOS PARA TUS IMÁGENES */
-    .galeria img {
-      border-radius: 8px;
+    /* BARRA DE NAVEGACIÓN SUPERIOR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      padding: 12px 20px;
+    }
+
+    .nav-contenedor {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primario);
+      letter-spacing: 0.5px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--texto);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background: var(--primario);
+      color: #fff;
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .contenedor {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 16px;
+    }
+
+    /* TARJETAS DE SECCIÓN */
+    section {
+      background: var(--tarjeta-bg);
+      border-radius: 16px;
+      padding: 28px 20px;
+      margin-bottom: 35px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: var(--primario);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .subtitulo {
+      text-align: center;
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    /* CUADRÍCULA DE IMÁGENES DEL CATÁLOGO */
+    .grid-catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .item-foto {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      cursor: zoom-in;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .galeria img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    .item-foto:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
     }
 
-    /* 3. ESTILOS DE NIEVE Y ARBOLITOS (Esto era lo que faltaba) */
+    .item-foto img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .etiqueta-pagina {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    /* SECCIÓN DE RUTAS Y ENTREGAS (MÁS AMPLIAS) */
+    .grid-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* VIDEO RESPONSIVO */
+    .video-caja {
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .video-caja video {
+      width: 100%;
+      display: block;
+    }
+
+    /* VISOR EN PANTALLA COMPLETA (LIGHTBOX) */
+    .visor {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      cursor: zoom-out;
+    }
+
+    .visor.activo {
+      display: flex;
+    }
+
+    .visor img {
+      max-width: 95%;
+      max-height: 92vh;
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .cerrar-visor {
+      position: absolute;
+      top: 18px;
+      right: 25px;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* BOTÓN VOLVER ARRIBA */
+    .btn-arriba {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primario);
+      color: #fff;
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+      transition: background 0.3s;
+    }
+
+    .btn-arriba:hover {
+      background: var(--primario-oscuro);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    /* ADORNOS NAVIDEÑOS */
     .adorno-navidad {
       position: fixed;
       top: -30px;
@@ -44,63 +256,119 @@
 </head>
 
 <body>
-  <div class="galeria" style="text-align: center;">
-    <img src="CAT 00.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 01.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 02.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 03.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 04.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 05.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 06.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 07.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 08.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 09.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 10.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 11.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 12.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 13.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 14.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 15.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 16.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 17.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 18.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 19.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 20.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 21.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 22.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 23.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 24.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 25.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 26.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 27.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 28.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 29.jpg" style="width: 700px; height: auto;">
-    <img src="CAT 30.jpg" style="width: 700px; height: auto;">
-  </div>
 
-  <main>
-    <h1 style="text-align: center;">INFORMACION SOBRE RUTAS</h1>
-
-    <div class="galeria" style="text-align: center;">
-      <img src="RUTFOR.jpg" style="width: 700px; height: auto;">
-      <h1 style="text-align: center; color: #800080;">INFORMACION PARA RUTAS LOCALES</h1>
+  <!-- ENCABEZADO CON NAVEGACIÓN -->
+  <header>
+    <div class="nav-contenedor">
+      <div class="logo">CATÁLOGO MUEBLECA</div>
+      <nav>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#rutas">Rutas</a>
+        <a href="#compras">Entregas y Compras</a>
+        <a href="#video">Video</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="galeria" style="text-align: center;">
-      <img src="ENTREGAS.jpg" style="width: 700px; height: auto;">
-      <img src="PASOS PARA COMPRAS.jpeg" style="width: 700px; height: auto;">
-      <img src="SHOPING.jpg" style="width: 700px; height: auto;">
-    </div>
+  <main class="contenedor">
 
-    <p style="text-align: center;">
-      <video src="video muebleca1.mp4" width="80%" autoplay muted loop controls></video>
-    </p>
+    <!-- SECCIÓN 1: CATÁLOGO DE PRODUCTOS -->
+    <section id="catalogo">
+      <h1>Catálogo de Productos</h1>
+      <p class="subtitulo">Haz clic en cualquier imagen para verla en tamaño completo</p>
+      <div class="grid-catalogo" id="contenedor-catalogo"></div>
+    </section>
+
+    <!-- SECCIÓN 2: INFORMACIÓN DE RUTAS -->
+    <section id="rutas">
+      <h2>Información sobre Rutas</h2>
+      <p class="subtitulo">Consulta nuestras rutas foráneas y locales</p>
+      <div class="grid-info">
+        <div class="item-foto" onclick="abrirVisor('RUTFOR.jpg')">
+          <img src="RUTFOR.jpg" alt="Rutas Foráneas" loading="lazy">
+          <span class="etiqueta-pagina">Rutas Foráneas</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: RUTAS LOCALES, ENTREGAS Y COMPRAS -->
+    <section id="compras">
+      <h2>Rutas Locales, Entregas y Compras</h2>
+      <p class="subtitulo">Todo lo que necesitas saber para realizar tu pedido</p>
+      <div class="grid-info">
+        <div class="item-foto" onclick="abrirVisor('ENTREGAS.jpg')">
+          <img src="ENTREGAS.jpg" alt="Entregas" loading="lazy">
+          <span class="etiqueta-pagina">Entregas</span>
+        </div>
+        <div class="item-foto" onclick="abrirVisor('PASOS PARA COMPRAS.jpeg')">
+          <img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras" loading="lazy">
+          <span class="etiqueta-pagina">Pasos para Comprar</span>
+        </div>
+        <div class="item-foto" onclick="abrirVisor('SHOPING.jpg')">
+          <img src="SHOPING.jpg" alt="Shopping" loading="lazy">
+          <span class="etiqueta-pagina">Shopping</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: VIDEO -->
+    <section id="video">
+      <h2>Conoce Más de Nosotros</h2>
+      <p class="subtitulo">Presentación Muebleca</p>
+      <div class="video-caja">
+        <!-- RECUERDA: Si cambiaste el nombre del archivo de video, ponlo aquí igual que en tu versión corregida -->
+        <video src="video mueblecal.mp4" autoplay muted loop playsinline controls></video>
+      </div>
+    </section>
+
   </main>
 
-  <!-- 4. SCRIPT DE NIEVE Y ARBOLITOS -->
-  <script>
-    const figuras = ['❄️', '❅', '🎄', '✨'];
+  <footer>
+    Catálogo Muebleca &copy; 2026 — Todos los derechos reservados
+  </footer>
 
+  <!-- BOTÓN SUBIR -->
+  <button class="btn-arriba" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Volver arriba">↑</button>
+
+  <!-- VISOR MODAL PARA VER FOTOS EN GRANDE -->
+  <div class="visor" id="visor" onclick="cerrarVisor()">
+    <span class="cerrar-visor">&times;</span>
+    <img id="imagen-visor" src="" alt="Vista ampliada">
+  </div>
+
+  <script>
+    // 1. GENERADOR AUTOMÁTICO DE LAS 31 IMÁGENES DEL CATÁLOGO (CAT 00 a CAT 30)
+    const contenedorCatalogo = document.getElementById('contenedor-catalogo');
+    for (let i = 0; i <= 30; i++) {
+      const numero = i < 10 ? '0' + i : i;
+      const ruta = `CAT ${numero}.jpg`;
+
+      const tarjeta = document.createElement('div');
+      tarjeta.className = 'item-foto';
+      tarjeta.onclick = () => abrirVisor(ruta);
+
+      tarjeta.innerHTML = `
+        <img src="${ruta}" alt="Catálogo página ${numero}" loading="lazy">
+        <span class="etiqueta-pagina">Pág. ${numero}</span>
+      `;
+      contenedorCatalogo.appendChild(tarjeta);
+    }
+
+    // 2. FUNCIONES DEL VISOR EN PANTALLA COMPLETA
+    const visor = document.getElementById('visor');
+    const imagenVisor = document.getElementById('imagen-visor');
+
+    function abrirVisor(rutaImagen) {
+      imagenVisor.src = rutaImagen;
+      visor.classList.add('activo');
+    }
+
+    function cerrarVisor() {
+      visor.classList.remove('activo');
+    }
+
+    // 3. ADORNOS NAVIDEÑOS
+    const figuras = ['❄️', '❅', '🎄', '✨'];
     function crearAdorno() {
       const adorno = document.createElement('div');
       adorno.classList.add('adorno-navidad');
@@ -110,19 +378,8 @@
       
       const duracion = Math.random() * 5 + 5;
       adorno.style.animationDuration = duracion + 's';
-      adorno.style.opacity = Math.random() * 0.5 + 0.5;
 
-      document.body.appendChild(adorno);
 
-      setTimeout(() => {
-        adorno.remove();
-      }, duracion * 1000);
-    }
-
-    setInterval(crearAdorno, 800);
-  </script>
-</body>
-</html>
 
 
 
