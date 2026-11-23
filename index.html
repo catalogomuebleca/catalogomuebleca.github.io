@@ -2,41 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-<script>
-  // Cambia aquí qué figuras quieres que caigan (puedes dejar solo copos o mezclar)
-  const figuras = ['❄️', '❅', '🎄', '✨']; 
 
-  function crearAdorno() {
-    const adorno = document.createElement('div');
-    adorno.classList.add('adorno-navidad');
-    
-    // Elige una figura al azar de la lista
-    adorno.innerText = figuras[Math.floor(Math.random() * figuras.length)];
-    
-    // Posición horizontal aleatoria
-    adorno.style.left = Math.random() * 100 + 'vw';
-    
-    // Tamaño aleatorio (entre 12px y 24px para que sea discreto)
-    adorno.style.fontSize = (Math.random() * 12 + 12) + 'px';
-    
-    // Velocidad de caída (entre 5 y 10 segundos)
-    const duracion = Math.random() * 5 + 5;
-    adorno.style.animationDuration = duracion + 's';
-    
-    // Un poco de transparencia para que no estorbe la lectura
-    adorno.style.opacity = Math.random() * 0.5 + 0.4;
-
-    document.body.appendChild(adorno);
-
-    // Elimina el elemento cuando termina de caer para no alentar la página
-    setTimeout(() => {
-      adorno.remove();
-    }, duracion * 1000);
-  }
-
-  // Crea un adorno nuevo cada 500 milisegundos (aumenta el número si quieres menos cantidad)
-  setInterval(crearAdorno, 1000);
-</script>
     <style>
     /* 1. AQUÍ VA EL FONDO FIJO (Dentro de <head>, NO dentro de <body>) */
     body {
@@ -71,7 +37,6 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
   </style>
-
 </head>
 <body>
   <div class="galeria" style="text-align: center;">
@@ -137,8 +102,44 @@
   <video src="video muebleca1.mp4" width="80%" autoplay muted loop controls></video>
 </p>
     </main>
+    <script>
+  // Cambia aquí qué figuras quieres que caigan (puedes dejar solo copos o mezclar)
+  const figuras = ['❄️', '❅', '🎄', '✨']; 
+
+  function crearAdorno() {
+    const adorno = document.createElement('div');
+    adorno.classList.add('adorno-navidad');
+    
+    // Elige una figura al azar de la lista
+    adorno.innerText = figuras[Math.floor(Math.random() * figuras.length)];
+    
+    // Posición horizontal aleatoria
+    adorno.style.left = Math.random() * 100 + 'vw';
+    
+    // Tamaño aleatorio (entre 12px y 24px para que sea discreto)
+    adorno.style.fontSize = (Math.random() * 12 + 12) + 'px';
+    
+    // Velocidad de caída (entre 5 y 10 segundos)
+    const duracion = Math.random() * 5 + 5;
+    adorno.style.animationDuration = duracion + 's';
+    
+    // Un poco de transparencia para que no estorbe la lectura
+    adorno.style.opacity = Math.random() * 0.5 + 0.4;
+
+    document.body.appendChild(adorno);
+
+    // Elimina el elemento cuando termina de caer para no alentar la página
+    setTimeout(() => {
+      adorno.remove();
+    }, duracion * 1000);
+  }
+
+  // Crea un adorno nuevo cada 500 milisegundos (aumenta el número si quieres menos cantidad)
+  setInterval(crearAdorno, 1000);
+</script>
 </body>
 </html>
+
 
 
 
