@@ -22,11 +22,6 @@
       scroll-behavior: smooth;
     }
 
-    html, body {
-      width: 100%;
-      overflow-x: hidden;
-    }
-
     body {
       font-family: 'Poppins', sans-serif;
       color: var(--texto);
@@ -38,37 +33,36 @@
       line-height: 1.6;
     }
 
-    /* BARRA DE NAVEGACIÓN SUPERIOR */
+    /* BARRA SUPERIOR */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
       background: rgba(255, 255, 255, 0.96);
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-      padding: 10px 14px;
+      padding: 12px 16px;
     }
 
     .nav-contenedor {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-between;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .logo {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--primario);
-      text-align: center;
     }
 
     nav {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     nav a {
@@ -76,10 +70,10 @@
       color: var(--texto);
       font-weight: 600;
       font-size: 0.85rem;
-      padding: 5px 10px;
-      border-radius: 16px;
+      padding: 6px 12px;
+      border-radius: 20px;
       background: #f3e5f5;
-      transition: background 0.3s, color 0.3s;
+      transition: 0.3s;
     }
 
     nav a:hover {
@@ -89,110 +83,79 @@
 
     /* CONTENEDOR PRINCIPAL */
     .contenedor {
-      width: 100%;
-      max-width: 1100px;
-      margin: 20px auto;
-      padding: 0 12px;
+      max-width: 1000px;
+      margin: 24px auto;
+      padding: 0 14px;
     }
 
-    /* TARJETAS DE SECCIÓN */
     section {
       background: var(--tarjeta-bg);
-      border-radius: 14px;
-      padding: 20px 14px;
-      margin-bottom: 25px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      border-radius: 16px;
+      padding: 24px 16px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     }
 
     h1, h2 {
       text-align: center;
       color: var(--primario);
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       margin-bottom: 6px;
-      font-weight: 700;
     }
 
     .subtitulo {
       text-align: center;
       color: #555;
-      font-size: 0.88rem;
-      margin-bottom: 18px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
     }
 
-    /* CUADRÍCULA ADAPTABLE */
-    .grid-catalogo, .grid-info {
+    /* CUADRÍCULA: 2 COLUMNAS EN PC, 1 COLUMNA GRANDE EN CELULAR */
+    .galeria {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
     }
 
-    @media (max-width: 850px) {
-      .grid-catalogo, .grid-info {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
-    }
-
-    @media (max-width: 550px) {
-      .grid-catalogo {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-      .grid-info {
+    @media (max-width: 650px) {
+      .galeria {
         grid-template-columns: 1fr;
+        gap: 16px;
       }
     }
 
-    /* CAJA DE CADA IMAGEN */
-    .foto-caja {
-      width: 100%;
-      border-radius: 8px;
+    /* EFECTO LUPA EN EL MISMO LUGAR */
+    .lupa-contenedor {
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
-      cursor: zoom-in;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
       background: #fff;
-      transition: all 0.25s ease;
+      cursor: zoom-in;
     }
 
-    .foto-caja img {
+    .lupa-contenedor img {
       width: 100%;
       height: auto;
       display: block;
-      transition: transform 0.25s ease;
+      transition: transform 0.2s ease-out;
+      transform-origin: center center;
     }
 
-    /* ESTADO AMPLIADO AHÍ MISMO AL HACER CLIC */
-    .foto-caja.zoom-activo {
-      grid-column: 1 / -1; /* Ocupa todo el ancho de la sección ahí mismo */
-      overflow-x: auto;    /* Permite deslizar la foto ampliada con el dedo */
+    .lupa-contenedor.con-zoom {
       cursor: zoom-out;
-      border: 3px solid var(--primario);
-      box-shadow: 0 12px 35px rgba(106, 27, 154, 0.35);
-      padding: 4px;
+      box-shadow: 0 8px 25px rgba(106, 27, 154, 0.35);
     }
 
-    .foto-caja.zoom-activo img {
-      width: 160%; /* Zoom real del 160% para leer precios y detalles */
-      max-width: none;
+    .lupa-contenedor.con-zoom img {
+      transform: scale(1.7);
     }
 
-    /* En PC, el 100% del contenedor (850px) ya es enorme y nítido */
-    @media (min-width: 768px) {
-      .foto-caja.zoom-activo {
-        max-width: 850px;
-        margin: 0 auto;
-      }
-      .foto-caja.zoom-activo img {
-        width: 100%;
-      }
-    }
-
-    /* VIDEO RESPONSIVO */
+    /* VIDEO */
     .video-caja {
-      width: 100%;
       max-width: 800px;
       margin: 0 auto;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
@@ -203,16 +166,16 @@
       display: block;
     }
 
-    /* BOTÓN VOLVER ARRIBA */
+    /* BOTÓN SUBIR */
     .btn-arriba {
       position: fixed;
-      bottom: 18px;
-      right: 18px;
+      bottom: 20px;
+      right: 20px;
       background: var(--primario);
       color: #fff;
       border: none;
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       font-size: 1.2rem;
       cursor: pointer;
@@ -222,9 +185,9 @@
 
     footer {
       text-align: center;
-      padding: 18px 12px;
+      padding: 20px;
       background: rgba(255, 255, 255, 0.92);
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       color: #555;
     }
 
@@ -264,57 +227,112 @@
 
     <section id="catalogo">
       <h1>Catálogo de Productos</h1>
-      <p class="subtitulo">Toca cualquier foto para hacerle zoom ahí mismo; vuelve a tocarla para reducirla</p>
-      <div class="grid-catalogo">
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 00.jpg" alt="Catálogo 00"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 01.jpg" alt="Catálogo 01"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 02.jpg" alt="Catálogo 02"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 03.jpg" alt="Catálogo 03"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 04.jpg" alt="Catálogo 04"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 05.jpg" alt="Catálogo 05"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 06.jpg" alt="Catálogo 06"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 07.jpg" alt="Catálogo 07"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 08.jpg" alt="Catálogo 08"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 09.jpg" alt="Catálogo 09"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 10.jpg" alt="Catálogo 10"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 11.jpg" alt="Catálogo 11"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 12.jpg" alt="Catálogo 12"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 13.jpg" alt="Catálogo 13"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 14.jpg" alt="Catálogo 14"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 15.jpg" alt="Catálogo 15"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 16.jpg" alt="Catálogo 16"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 17.jpg" alt="Catálogo 17"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 18.jpg" alt="Catálogo 18"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 19.jpg" alt="Catálogo 19"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 20.jpg" alt="Catálogo 20"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 21.jpg" alt="Catálogo 21"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 22.jpg" alt="Catálogo 22"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 23.jpg" alt="Catálogo 23"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 24.jpg" alt="Catálogo 24"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 25.jpg" alt="Catálogo 25"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 26.jpg" alt="Catálogo 26"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 27.jpg" alt="Catálogo 27"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 28.jpg" alt="Catálogo 28"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 29.jpg" alt="Catálogo 29"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="CAT 30.jpg" alt="Catálogo 30"></div>
+      <p class="subtitulo">Toca o haz clic en una imagen para activar la lupa y mueve el dedo o cursor para explorar</p>
+      <div class="galeria">
+        <div class="lupa-contenedor"><img src="CAT 00.jpg" alt="Catálogo 00"></div>
+        <div class="lupa-contenedor"><img src="CAT 01.jpg" alt="Catálogo 01"></div>
+        <div class="lupa-contenedor"><img src="CAT 02.jpg" alt="Catálogo 02"></div>
+        <div class="lupa-contenedor"><img src="CAT 03.jpg" alt="Catálogo 03"></div>
+        <div class="lupa-contenedor"><img src="CAT 04.jpg" alt="Catálogo 04"></div>
+        <div class="lupa-contenedor"><img src="CAT 05.jpg" alt="Catálogo 05"></div>
+        <div class="lupa-contenedor"><img src="CAT 06.jpg" alt="Catálogo 06"></div>
+        <div class="lupa-contenedor"><img src="CAT 07.jpg" alt="Catálogo 07"></div>
+        <div class="lupa-contenedor"><img src="CAT 08.jpg" alt="Catálogo 08"></div>
+        <div class="lupa-contenedor"><img src="CAT 09.jpg" alt="Catálogo 09"></div>
+        <div class="lupa-contenedor"><img src="CAT 10.jpg" alt="Catálogo 10"></div>
+        <div class="lupa-contenedor"><img src="CAT 11.jpg" alt="Catálogo 11"></div>
+        <div class="lupa-contenedor"><img src="CAT 12.jpg" alt="Catálogo 12"></div>
+        <div class="lupa-contenedor"><img src="CAT 13.jpg" alt="Catálogo 13"></div>
+        <div class="lupa-contenedor"><img src="CAT 14.jpg" alt="Catálogo 14"></div>
+        <div class="lupa-contenedor"><img src="CAT 15.jpg" alt="Catálogo 15"></div>
+        <div class="lupa-contenedor"><img src="CAT 16.jpg" alt="Catálogo 16"></div>
+        <div class="lupa-contenedor"><img src="CAT 17.jpg" alt="Catálogo 17"></div>
+        <div class="lupa-contenedor"><img src="CAT 18.jpg" alt="Catálogo 18"></div>
+        <div class="lupa-contenedor"><img src="CAT 19.jpg" alt="Catálogo 19"></div>
+        <div class="lupa-contenedor"><img src="CAT 20.jpg" alt="Catálogo 20"></div>
+        <div class="lupa-contenedor"><img src="CAT 21.jpg" alt="Catálogo 21"></div>
+        <div class="lupa-contenedor"><img src="CAT 22.jpg" alt="Catálogo 22"></div>
+        <div class="lupa-contenedor"><img src="CAT 23.jpg" alt="Catálogo 23"></div>
+        <div class="lupa-contenedor"><img src="CAT 24.jpg" alt="Catálogo 24"></div>
+        <div class="lupa-contenedor"><img src="CAT 25.jpg" alt="Catálogo 25"></div>
+        <div class="lupa-contenedor"><img src="CAT 26.jpg" alt="Catálogo 26"></div>
+        <div class="lupa-contenedor"><img src="CAT 27.jpg" alt="Catálogo 27"></div>
+        <div class="lupa-contenedor"><img src="CAT 28.jpg" alt="Catálogo 28"></div>
+        <div class="lupa-contenedor"><img src="CAT 29.jpg" alt="Catálogo 29"></div>
+        <div class="lupa-contenedor"><img src="CAT 30.jpg" alt="Catálogo 30"></div>
       </div>
     </section>
 
     <section id="rutas">
       <h2>Información sobre Rutas</h2>
       <p class="subtitulo">Consulta nuestras rutas foráneas y locales</p>
-      <div class="grid-info">
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="RUTFOR.jpg" alt="Rutas Foráneas"></div>
+      <div class="galeria">
+        <div class="lupa-contenedor"><img src="RUTFOR.jpg" alt="Rutas Foráneas"></div>
       </div>
     </section>
 
     <section id="compras">
       <h2>Rutas Locales, Entregas y Compras</h2>
       <p class="subtitulo">Todo lo que necesitas saber para realizar tu pedido</p>
-      <div class="grid-info">
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="ENTREGAS.jpg" alt="Entregas"></div>
-        <div class="foto-caja" onclick="hacerZoom(this)"><img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras"></div>
+      <div class="galeria">
+        <div class="lupa-contenedor"><img src="ENTREGAS.jpg" alt="Entregas"></div>
+        <div class="lupa-contenedor"><img src="PASOS PARA COMPRAS.jpeg" alt="Pasos para compras"></div>
+        <div class="lupa-contenedor"><img src="SHOPING.jpg" alt="Shopping"></div>
+      </div>
+    </section>
 
+    <section id="video">
+      <h2>Conoce Más de Nosotros</h2>
+      <p class="subtitulo">Presentación Muebleca</p>
+      <div class="video-caja">
+        <video src="video mueblecal.mp4" autoplay muted loop playsinline controls></video>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Catálogo Muebleca &copy; 2026 — Todos los derechos reservados
+  </footer>
+
+  <button class="btn-arriba" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Volver arriba">↑</button>
+
+  <script>
+    // LUPA INTERACTIVA EN EL MISMO LUGAR
+    document.querySelectorAll('.lupa-contenedor').forEach(caja => {
+      const img = caja.querySelector('img');
+
+      caja.addEventListener('click', (e) => {
+        caja.classList.toggle('con-zoom');
+        if (caja.classList.contains('con-zoom')) {
+          moverLupa(e, caja, img);
+        } else {
+          img.style.transformOrigin = 'center center';
+        }
+      });
+
+      caja.addEventListener('mousemove', (e) => {
+        if (caja.classList.contains('con-zoom')) {
+          moverLupa(e, caja, img);
+        }
+      });
+
+      caja.addEventListener('mouseleave', () => {
+        caja.classList.remove('con-zoom');
+        img.style.transformOrigin = 'center center';
+      });
+    });
+
+    function moverLupa(e, caja, img) {
+      const rect = caja.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      img.style.transformOrigin = `${x}% ${y}%`;
+    }
+
+    // ADORNOS NAVIDEÑOS
+    const figuras = ['❄️', '❅', '🎄', '✨'];
+    function crearAdorno() {
 
 
 
